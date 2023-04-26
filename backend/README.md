@@ -1,6 +1,7 @@
 # Project setup
 
 1. dependencies
+
 - python3, pip, pipx, poetry
 
 1. precommit
@@ -19,8 +20,10 @@ python manage.py runserver
 python manage.py test
 ```
 
+python manage.py createsuperuser
 
 # Maintenance
+
 ```
 pre-commit autoupdate
 ```
