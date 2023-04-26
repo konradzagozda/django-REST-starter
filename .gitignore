@@ -2,3 +2,4 @@
 .git
 .pg_data
 .pg_admin_data
+**/.venv
