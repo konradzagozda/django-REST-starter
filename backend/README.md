@@ -21,3 +21,6 @@ python manage.py test
 
 
 # Maintenance
+```
+pre-commit autoupdate
+```
