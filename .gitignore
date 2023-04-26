@@ -1,3 +1,4 @@
 **/__pycache__/
 .git
 .pg_data
+.pg_admin_data
