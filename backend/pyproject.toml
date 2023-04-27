@@ -28,3 +28,16 @@ build-backend = "poetry.core.masonry.api"
 DJANGO_SETTINGS_MODULE = "backend.settings.test"
 python_files = ["test_*.py", "*_test.py", "tests.py"]
 addopts = "--cov=. --cov-report html"
+
+[tool.coverage.report]
+fail_under = 95
+
+[tool.coverage.run]
+omit = [
+	"backend/settings/*",
+	"backend/asgi.py",
+	"backend/wsgi.py",
+	"**/urls.py",
+	"manage.py",
+	"**/tests.py"
+]
