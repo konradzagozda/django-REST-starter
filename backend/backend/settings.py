@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 DEBUG = os.environ.get('DJANGO_DEBUG', True)
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'secret')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'supersecret')
 
 ALLOWED_HOSTS = ['*']
 
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'dj_rest_auth.registration',
     'drf_spectacular',
+    'common',
     "todo"
 ]
 
@@ -157,3 +158,5 @@ SPECTACULAR_SETTINGS = {
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = os.environ.get('EMAIL_HOST', 'mailhog')
 EMAIL_PORT = os.environ.get('EMAIL_PORT', 1025)
+
+ACCOUNT_EMAIL_VERIFICATION = os.environ.get('ACCOUNT_EMAIL_VERIFICATION', 'none')
