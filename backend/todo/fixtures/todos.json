@@ -1,0 +1,62 @@
+[
+  {
+    "model": "todo.todo",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "title": "Buy groceries",
+      "description": "Milk, eggs, bread, fruits",
+      "completed": false
+    }
+  },
+  {
+    "model": "todo.todo",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "title": "Finish report",
+      "description": "Complete the monthly report for the manager",
+      "completed": false
+    }
+  },
+  {
+    "model": "todo.todo",
+    "pk": 3,
+    "fields": {
+      "user": 2,
+      "title": "Read a book",
+      "description": "Read 'The Catcher in the Rye' by J.D. Salinger",
+      "completed": true
+    }
+  },
+  {
+    "model": "todo.todo",
+    "pk": 4,
+    "fields": {
+      "user": 2,
+      "title": "Plan vacation",
+      "description": "Research and book flights, hotels, and activities for summer vacation",
+      "completed": false
+    }
+  },
+  {
+    "model": "todo.todo",
+    "pk": 5,
+    "fields": {
+      "user": 3,
+      "title": "Exercise",
+      "description": "Go for a 5km run",
+      "completed": true
+    }
+  },
+  {
+    "model": "todo.todo",
+    "pk": 6,
+    "fields": {
+      "user": 3,
+      "title": "Learn a new recipe",
+      "description": "Try making homemade pizza from scratch",
+      "completed": false
+    }
+  }
+]

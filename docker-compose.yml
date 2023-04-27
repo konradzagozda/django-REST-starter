@@ -6,12 +6,12 @@ services:
     build:
       context: ./backend
       dockerfile: Dockerfile.dev
-    command:
-      [
-        "ash",
-        "-c",
-        "python manage.py migrate && python manage.py load_users && python manage.py runserver 0.0.0.0:8000"
-      ]
+    command: >-
+      ash -c "
+      python manage.py migrate &&
+      python manage.py load_users &&
+      python manage.py loaddata todos.json &&
+      python manage.py runserver 0.0.0.0:8000"
     volumes:
       - ./backend:/app
     ports:
