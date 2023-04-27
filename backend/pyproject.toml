@@ -14,6 +14,15 @@ django-allauth = "^0.54.0"
 dj-rest-auth = "^3.0.0"
 drf-spectacular = "^0.26.2"
 
+[tool.poetry.group.test.dependencies]
+pytest = "^7.3.1"
+pytest-django = "^4.5.2"
+pytest-xdist = "^3.2.1"
+
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "backend.settings.test"
+python_files = ["test_*.py", "*_test.py", "tests.py"]
