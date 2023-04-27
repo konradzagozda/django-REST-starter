@@ -55,4 +55,11 @@ services:
     volumes:
       - ./docs:/docs/
     ports:
-      - "8001:8000"
+      - "7000:8000"
+
+  coverage:
+    image: halverneus/static-file-server
+    volumes:
+      - ./backend/htmlcov:/web
+    ports:
+      - "8888:8080"
