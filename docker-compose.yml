@@ -45,3 +45,17 @@ services:
     restart: unless-stopped
     volumes:
       - ./pgadmin-servers.json:/pgadmin4/servers.json
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "8025:8025"
+      - "1025:1025"
+    restart: unless-stopped
+
+  mkdocs:
+    image: squidfunk/mkdocs-material
+    volumes:
+      - ./docs:/docs/
+    ports:
+      - "8001:8000"
