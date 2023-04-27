@@ -4,7 +4,7 @@ from .models import Todo
 from .serializers import TodoSerializer
 
 class TodoViewSet(viewsets.ModelViewSet):
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     serializer_class = TodoSerializer
 
     def get_queryset(self):
