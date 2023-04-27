@@ -18,6 +18,7 @@ drf-spectacular = "^0.26.2"
 pytest = "^7.3.1"
 pytest-django = "^4.5.2"
 pytest-xdist = "^3.2.1"
+pytest-cov = "^4.0.0"
 
 [build-system]
 requires = ["poetry-core"]
@@ -26,3 +27,4 @@ build-backend = "poetry.core.masonry.api"
 [tool.pytest.ini_options]
 DJANGO_SETTINGS_MODULE = "backend.settings.test"
 python_files = ["test_*.py", "*_test.py", "tests.py"]
+addopts = "--cov=. --cov-report html"
