@@ -1,11 +1,16 @@
 site_name: Todo API docs
 site_url: http://127.0.0.1:8000
-theme:
-  name: material
-  palette:
-    primary: "blue"
+theme: mkdocs
 nav:
-  - Home: index.md
+  - Introduction: index.md
   - Getting Started:
+      - Requirements: getting-started/requirements.md
       - Installation: getting-started/installation.md
-      - Usage: getting-started/usage.md
+      - Basic Usage: getting-started/basic-usage.md
+  - Developer Guide: developer-guide.md
+  - User Guide: user-guide.md
+  - Configuration: configuration.md
+  - API Reference: api-reference.md
+  - FAQ: faq.md
+  - Troubleshooting: troubleshooting.md
+  - License: license.md

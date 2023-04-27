@@ -1,1 +1,1 @@
-Hello from docs
+Welcome to the [Your Project Name] documentation. [Your Project Name] is a [brief project description]. This documentation will help you get started with using [Your Project Name], understand its features, and provide guidance for common tasks.
