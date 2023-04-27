@@ -1,5 +1,13 @@
 [
   {
+    "username": "admin",
+    "email": "admin@example.com",
+    "first_name": "Admin",
+    "last_name": "User",
+    "password": "admin",
+    "is_superuser": true
+  },
+  {
     "username": "user1",
     "email": "user1@example.com",
     "first_name": "John",
@@ -13,11 +21,11 @@
     "last_name": "Doe",
     "password": "user2"
   },
-{
-	"username": "user3",
-	"email": "user2@example.com",
-	"first_name": "Konrad",
-	"last_name": "Doe",
-	"password": "user3"
-}
+  {
+    "username": "user3",
+    "email": "user3@example.com",
+    "first_name": "Konrad",
+    "last_name": "Doe",
+    "password": "user3"
+  }
 ]

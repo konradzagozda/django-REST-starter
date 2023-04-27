@@ -4,6 +4,7 @@ from .models import Todo
 
 pytestmark = pytest.mark.django_db
 
+# test models
 @pytest.fixture
 def test_user():
     return User.objects.create_user(username='test_user', password='test_password')
