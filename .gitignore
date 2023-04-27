@@ -3,3 +3,5 @@
 .pg_data
 .pg_admin_data
 **/.venv
+**/.pytest_cache
+**/.benchmarks
