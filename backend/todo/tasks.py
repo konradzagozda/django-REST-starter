@@ -1,30 +1,64 @@
 from celery import shared_task
+from faker import Faker
 from todo.models import Todo
 from django.contrib.auth.models import User
 from django.template.loader import get_template
 from django.core.mail import EmailMultiAlternatives
 from django.conf import settings
+from django.core.mail import send_mail
+
 
 @shared_task
-def send_undone_todos_email(user_id):
-    user = User.objects.get(id=user_id)
-    todos = Todo.objects.filter(user=user, completed=False)
+def send_undone_todos_email_to_all_users():
+    users = User.objects.all()
 
-    if not todos:
-        return
+    for user in users:
+        todos = Todo.objects.filter(user=user, completed=False)
 
-    subject = 'Your Undone Todos'
-    from_email = settings.EMAIL_FROM
-    to_email = user.email
+        if not todos:
+            continue
 
-    text_template = get_template('email/undone_todos.txt')
-    html_template = get_template('email/undone_todos.html')
+        subject = 'Your Undone Todos'
+        from_email = settings.EMAIL_FROM
+        to_email = user.email
 
-    context = {'user': user, 'todos': todos}
+        text_template = get_template('email/undone_todos.txt')
+        html_template = get_template('email/undone_todos.html')
 
-    text_content = text_template.render(context)
-    html_content = html_template.render(context)
+        context = {'user': user, 'todos': todos}
 
-    msg = EmailMultiAlternatives(subject, text_content, from_email, [to_email])
-    msg.attach_alternative(html_content, 'text/html')
-    msg.send()
+        text_content = text_template.render(context)
+        html_content = html_template.render(context)
+
+        msg = EmailMultiAlternatives(subject, text_content, from_email, [to_email])
+        msg.attach_alternative(html_content, 'text/html')
+        msg.send()
+
+
+@shared_task
+def create_random_users_and_tasks(num_users=1000, num_todos_per_user=100):
+    fake = Faker()
+
+    for _ in range(num_users):
+        username = fake.user_name()
+        email = fake.email()
+        password = fake.password()
+
+        user = User.objects.create_user(username=username, email=email, password=password)
+
+        for _ in range(num_todos_per_user):
+            title = fake.sentence(nb_words=3)
+            description = fake.text(max_nb_chars=200)
+            completed = fake.boolean(chance_of_getting_true=50)
+
+            Todo.objects.create(user=user, title=title, description=description, completed=completed)
+
+    subject = 'Random users and tasks created'
+    message = f'Created {num_users} random users, each with {num_todos_per_user} tasks.'
+
+    send_mail(
+        subject,
+        message,
+        settings.EMAIL_FROM,  # Replace with your 'from' email address
+        [settings.EMAIL_TO],  # Replace with the admin's email address
+    )

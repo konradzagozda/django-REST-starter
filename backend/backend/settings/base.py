@@ -153,7 +153,6 @@ ACCOUNT_EMAIL_VERIFICATION = env.get('ACCOUNT_EMAIL_VERIFICATION', 'optional')
 CELERY_TASK_TIME_LIMIT = 30 * 60 # 30 min task limit
 CELERY_CACHE_BACKEND = 'django-cache'
 
-
 CELERY_BROKER_URL = "amqp://" + env.get('RABBITMQ_USER', 'rabbitmq') + \
        ":" + env.get('RABBITMQ_PASSWORD', 'rabbitmq') + \
           '@' + env.get('RABBITMQ_HOST', 'rabbitmq') + \
@@ -164,3 +163,4 @@ CELERY_RESULT_BACKEND = f"{REDIS_URL}/{env.get('REDIS_CELERY_RESULT_BACKEND_DB',
 
 # Custom Settings
 EMAIL_FROM = env.get('EMAIL_FROM', 'noreply@example.com')
+EMAIL_TO = env.get('EMAIL_TO', 'email@example.com')

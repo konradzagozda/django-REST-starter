@@ -693,6 +693,21 @@ files = [
 testing = ["pre-commit"]
 
 [[package]]
+name = "faker"
+version = "18.6.0"
+description = "Faker is a Python package that generates fake data for you."
+category = "main"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "Faker-18.6.0-py3-none-any.whl", hash = "sha256:49060d40e6659e116f53353c5771ad2f2cbcd12b15771f49e3000a3a451f13ec"},
+    {file = "Faker-18.6.0.tar.gz", hash = "sha256:ac903ba8cb5adbce2cdd15e5536118d484bbe01126f3c774dd9f6df77b61232d"},
+]
+
+[package.dependencies]
+python-dateutil = ">=2.4"
+
+[[package]]
 name = "idna"
 version = "3.4"
 description = "Internationalized Domain Names in Applications (IDNA)"
@@ -1299,4 +1314,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "388eeed247bde44b620217bda711eb465f2269f807937289b12ad96599262aec"
+content-hash = "8d65d43a6aeb43b03153838acbfe38cf9e430ac11278cedba6c9b7c3032ad7da"
