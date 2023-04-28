@@ -8,9 +8,14 @@ docker compose up -d
 # useful commands:
 
 ```sh
-docker compose logs -f backend    # backend logs
-docker compose logs -f            # all logs
-./run-cmd.sh pytest -n 4          # run tests
+docker compose logs -f backend      # backend logs
+docker compose logs -f              # all logs
+./run-cmd.sh pytest -n 4            # run tests
+./run-cmd.sh poetry add <package>   # add package
+./run-cmd.sh python manage.py shell # django shell
+sudo rm -rf ./.pg_data              # reset db data, must restart containers after
+docker compose down --volumes       # reset data for all containers
+docker compose exec backend ash     # shell within backend container, you can also run commands with: alternative to ./run-cmd.sh <command>
 ```
 
 # What's available:
@@ -41,6 +46,7 @@ user3 : user3
 - redis commander [http://127.0.0.1:8081](http://127.0.0.1:8081)
 - admin: [http://127.0.0.1:8000](http://127.0.0.1:8000/admin)
 - pgadmin: [http://127.0.0.1:5050](http://127.0.0.1:5050)
+- flower: [http://127.0.0.1:5050](http://127.0.0.1:5555)
 
 ```
 postgres@postgres.com : postgres

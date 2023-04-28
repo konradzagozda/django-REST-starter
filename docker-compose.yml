@@ -60,7 +60,7 @@ services:
       - "5672:5672" # communication
     restart: unless-stopped
 
-  celery:
+  celery-worker:
     build:
       context: ./backend
       dockerfile: Dockerfile.dev
@@ -78,6 +78,21 @@ services:
       context: ./backend
       dockerfile: Dockerfile.dev
     command: celery -A backend beat -l info
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - rabbitmq
+    env_file:
+      - .env
+    restart: unless-stopped
+
+  flower:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    command: celery -A backend flower
+    ports:
+      - "5555:5555"
     volumes:
       - ./backend:/app
     depends_on:
