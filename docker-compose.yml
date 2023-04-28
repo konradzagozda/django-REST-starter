@@ -15,19 +15,75 @@ services:
     depends_on:
       - postgres
     env_file:
-      - ./backend/.env
+      - .env
     restart: unless-stopped
 
   postgres:
     image: postgres:15
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=postgres
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
     volumes:
       - ./.pg_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    restart: unless-stopped
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    command: [ "redis-server", "/usr/local/etc/redis/redis.conf" ]
+    volumes:
+      - ./redis.conf:/usr/local/etc/redis/redis.conf
+
+  redis-commander:
+    image: ghcr.io/joeferner/redis-commander
+    restart: unless-stopped
+    ports:
+      - "8081:8081"
+    depends_on:
+      - redis
+    volumes:
+      - ./redis-commander-local.json:/redis-commander/config/local.json
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+      RABBITMQ_DEFAULT_VHOST: ${RABBITMQ_VHOST}
+    ports:
+      - "15672:15672" # management
+      - "5672:5672" # communication
+    restart: unless-stopped
+
+  celery:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    command: celery -A backend worker -l info
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - rabbitmq
+    env_file:
+      - .env
+    restart: unless-stopped
+
+  celery-beat:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    command: celery -A backend beat -l info
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - rabbitmq
+    env_file:
+      - .env
     restart: unless-stopped
 
   pgadmin:
@@ -56,6 +112,7 @@ services:
       - ./docs:/docs/
     ports:
       - "7000:8000"
+    restart: unless-stopped
 
   coverage:
     image: halverneus/static-file-server
@@ -63,3 +120,4 @@ services:
       - ./backend/htmlcov:/web
     ports:
       - "8888:8080"
+    restart: unless-stopped

@@ -1,4 +1,4 @@
-from .base import *
+from backend.settings.base import *
 
 
 DATABASES = {

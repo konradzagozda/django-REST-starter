@@ -38,3 +38,5 @@ password db: postgres
 
 - last coverage report [http://127.0.0.1:8888](http://127.0.0.1:8888)
 - mailhog [http://127.0.0.1:8025](http://127.0.0.1:8025)
+- rabbitmq management [http://127.0.0.1:15672](http://127.0.0.1:15672)
+- redis commander [http://127.0.0.1:8081](http://127.0.0.1:8081)

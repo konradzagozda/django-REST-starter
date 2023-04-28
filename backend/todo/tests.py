@@ -1,7 +1,7 @@
 import pytest
 from django.contrib.auth.models import User
 from todo.serializers import TodoSerializer
-from .models import Todo
+from todo.models import Todo
 from rest_framework.test import APIClient
 
 pytestmark = pytest.mark.django_db

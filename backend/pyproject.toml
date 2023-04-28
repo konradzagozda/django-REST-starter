@@ -13,6 +13,10 @@ psycopg2 = "^2.9.6"
 django-allauth = "^0.54.0"
 dj-rest-auth = "^3.0.0"
 drf-spectacular = "^0.26.2"
+celery = "^5.2.7"
+django-celery-results = "^2.5.0"
+django-celery-beat = "^2.5.0"
+redis = "^4.5.4"
 
 [tool.poetry.group.test.dependencies]
 pytest = "^7.3.1"

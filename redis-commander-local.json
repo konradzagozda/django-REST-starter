@@ -1,0 +1,28 @@
+{
+  "connections": [
+    {
+      "label": "empty",
+      "host": "redis",
+      "port": 6379,
+	    "username": "redis",
+      "password": "redis",
+      "dbIndex": 0
+    },
+	{
+      "label": "cache",
+      "host": "redis",
+      "port": 6379,
+	  "username": "redis",
+      "password": "redis",
+      "dbIndex": 1
+    },
+	{
+      "label": "celery-results",
+      "host": "redis",
+      "port": 6379,
+	  "username": "redis",
+      "password": "redis",
+      "dbIndex": 2
+    }
+  ]
+}

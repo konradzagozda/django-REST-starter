@@ -8,3 +8,4 @@
 **/.coverage
 
 backend/htmlcov
+backend/celerybeat-schedule

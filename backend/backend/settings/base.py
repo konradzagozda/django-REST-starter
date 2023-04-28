@@ -1,33 +1,50 @@
 from pathlib import Path
 import os
+from celery.schedules import crontab
+from django.core.exceptions import ImproperlyConfigured
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = os.environ
+
+if not env.get('LOADED'):
+    raise ImproperlyConfigured('environment file has not been not loaded')
+
 ### BEGIN DJANGO
-DEBUG = os.environ.get('DJANGO_DEBUG', True)
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'supersecret')
+DEBUG = env.get('DJANGO_DEBUG', True)
+SECRET_KEY = env.get('DJANGO_SECRET_KEY', 'supersecret')
 
 ALLOWED_HOSTS = ['*']
 
-INSTALLED_APPS = [
+DJANGO_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'django.contrib.sites',
+]
+
+THIRD_PARTY_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "dj_rest_auth",
-    'django.contrib.sites',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'dj_rest_auth.registration',
     'drf_spectacular',
+    "django_celery_results",
+    "django_celery_beat"
+]
+
+LOCAL_APPS = [
     'common',
     "todo"
 ]
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -62,10 +79,10 @@ WSGI_APPLICATION = "backend.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME', 'postgres'),
-        'USER': os.environ.get('DB_USER', 'postgres'),
-        'PASSWORD': os.environ.get('DB_PASSWORD', 'postgres'),
-        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'NAME': env.get('DB_NAME', 'postgres'),
+        'USER': env.get('DB_USER', 'postgres'),
+        'PASSWORD': env.get('DB_PASSWORD', 'postgres'),
+        'HOST': env.get('DB_HOST', 'localhost'),
         'PORT': 5432,
     }
 }
@@ -96,8 +113,19 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = os.environ.get('EMAIL_HOST', 'mailhog')
-EMAIL_PORT = os.environ.get('EMAIL_PORT', 1025)
+EMAIL_HOST = env.get('EMAIL_HOST', 'mailhog')
+EMAIL_PORT = env.get('EMAIL_PORT', '1025')
+REDIS_URL = "redis://" + env.get('REDIS_USERNAME', 'redis') + ":" + \
+      env.get('REDIS_PASSWORD', 'redis') + "@" + env.get('REDIS_HOST', 'redis') + \
+          ":" + env.get('REDIS_PORT', '6379')
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.redis.RedisCache",
+        "LOCATION": REDIS_URL + "/" + env.get('REDIS_CACHE_DB', "1"),
+    }
+}
+
 ### END DJANGO
 
 REST_FRAMEWORK = {
@@ -119,5 +147,17 @@ SPECTACULAR_SETTINGS = { # drf-spectacular
     'SERVE_INCLUDE_SCHEMA': False,
 }
 
+# ALLAUTH
+ACCOUNT_EMAIL_VERIFICATION = env.get('ACCOUNT_EMAIL_VERIFICATION', 'optional')
 
-ACCOUNT_EMAIL_VERIFICATION = os.environ.get('ACCOUNT_EMAIL_VERIFICATION', 'optional')
+CELERY_TASK_TIME_LIMIT = 30 * 60 # 30 min task limit
+CELERY_CACHE_BACKEND = 'django-cache'
+
+
+CELERY_BROKER_URL = "amqp://" + env.get('RABBITMQ_USER', 'rabbitmq') + \
+       ":" + env.get('RABBITMQ_PASSWORD', 'rabbitmq') + \
+          '@' + env.get('RABBITMQ_HOST', 'rabbitmq') + \
+              ":" + env.get('RABBITMQ_PORT', '5672') + \
+                  "/" + env.get('RABBITMQ_VHOST', 'backend')
+
+CELERY_RESULT_BACKEND = f"{REDIS_URL}/{env.get('REDIS_CELERY_RESULT_BACKEND_DB', '2')}"
