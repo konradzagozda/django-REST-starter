@@ -1,15 +1,11 @@
-# Use the official Alpine-based Python base image
 FROM python:3.10-alpine
 
-# Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# Create and set the working directory
 RUN mkdir /app
 WORKDIR /app
 
-# # Install system dependencies
 RUN apk update \
 	&& apk add --no-cache \
 	gcc \
@@ -17,13 +13,10 @@ RUN apk update \
 	postgresql-dev \
 	libffi-dev
 
-# Install Poetry using wget
 RUN wget -O - https://install.python-poetry.org | python3 -
 ENV PATH="/root/.local/bin:${PATH}"
 
-# Copy the pyproject.toml and poetry.lock files
 COPY pyproject.toml poetry.lock /app/
 
-# Install project dependencies
 RUN poetry config virtualenvs.create false \
 	&& poetry install --no-interaction --no-ansi
