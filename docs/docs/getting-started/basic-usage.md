@@ -2,7 +2,7 @@
 
 ```sh
 docker compose up -d
-./load-data.sh
+cd backend && ./load-data.sh
 ```
 
 see logs:
@@ -22,6 +22,8 @@ user1 : user1
 user2 : user2
 user3 : user3
 ```
+
+- admin: [http://127.0.0.1:8000](http://127.0.0.1:8000/admin)
 
 - documentation
 

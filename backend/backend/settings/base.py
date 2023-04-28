@@ -161,3 +161,6 @@ CELERY_BROKER_URL = "amqp://" + env.get('RABBITMQ_USER', 'rabbitmq') + \
                   "/" + env.get('RABBITMQ_VHOST', 'backend')
 
 CELERY_RESULT_BACKEND = f"{REDIS_URL}/{env.get('REDIS_CELERY_RESULT_BACKEND_DB', '2')}"
+
+# Custom Settings
+EMAIL_FROM = env.get('EMAIL_FROM', 'noreply@example.com')

@@ -41,7 +41,14 @@ omit = [
 	"backend/settings/*",
 	"backend/asgi.py",
 	"backend/wsgi.py",
+	"backend/celery.py",
 	"**/urls.py",
 	"manage.py",
-	"**/tests.py"
+	"**/tests.py",
+	"**/migrations/**",
+	"**/__init__.py",
+	"**/tests/**",
+	"conftest.py",
+	"**/apps.py",
+	"**/admin.py"
 ]

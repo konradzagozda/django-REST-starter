@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Your Undone Todos</title>
+</head>
+<body>
+  <p>Hello {{ user.username }},</p>
+
+  <p>Here is the list of your undone todos:</p>
+
+  <ul>
+    {% for todo in todos %}
+      <li>{{ todo.title }}</li>
+    {% endfor %}
+  </ul>
+
+  <p>Don't forget to complete them!</p>
+
+  <p>Best regards,<br>Your Todo App</p>
+</body>
+</html>

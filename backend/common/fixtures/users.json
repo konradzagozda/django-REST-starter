@@ -5,6 +5,7 @@
     "first_name": "Admin",
     "last_name": "User",
     "password": "admin",
+    "is_staff": true,
     "is_superuser": true
   },
   {

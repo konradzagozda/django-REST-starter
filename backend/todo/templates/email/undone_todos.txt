@@ -1,0 +1,12 @@
+Hello {{ user.username }},
+
+Here is the list of your undone todos:
+
+{% for todo in todos %}
+- {{ todo.title }}
+{% endfor %}
+
+Don't forget to complete them!
+
+Best regards,
+Your Todo App
