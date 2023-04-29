@@ -1,0 +1,44 @@
+{
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Django",
+			"type": "python",
+			"request": "attach",
+			"port": 5678,
+			"host": "localhost",
+			"pathMappings": [
+				{
+					"localRoot": "${workspaceFolder}/backend",
+					"remoteRoot": "/app"
+				}
+			],
+		},
+		{
+			"name": "Shell",
+			"type": "python",
+			"request": "attach",
+			"port": 5679,
+			"host": "localhost",
+			"pathMappings": [
+				{
+					"localRoot": "${workspaceFolder}/backend",
+					"remoteRoot": "/app"
+				}
+			],
+			"presentation": {
+				"hidden": true,
+			}
+		}
+	],
+	"compounds": [
+		{
+			"name": "Django + Shell",
+			"configurations": [
+				"Django",
+				"Shell"
+			],
+			"stopAll": true,
+		}
+	]
+}

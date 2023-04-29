@@ -8,32 +8,15 @@ services:
       context: ./backend
       dockerfile: Dockerfile.dev
     command: >-
-      ash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+      ash -c "python manage.py migrate && python -m debugpy --wait-for-client --listen 0.0.0.0:5678 manage.py runserver 0.0.0.0:8000 --nothreading --noreload"
     volumes:
       - ./backend:/app
     ports:
       - 8000:8000
       - 5678:5678
+      - 5679:5679 # run shell debugger here
     depends_on:
       - postgres
-    env_file:
-      - .env
-    restart: unless-stopped
-
-  shell:
-    container_name: shell
-    build:
-      context: ./backend
-      dockerfile: Dockerfile.dev
-    command: >-
-      ash -c "python manage.py shell"
-    volumes:
-      - ./backend:/app
-    ports:
-      - 5679:5679
-    depends_on:
-      - postgres
-      - backend
     env_file:
       - .env
     restart: unless-stopped
