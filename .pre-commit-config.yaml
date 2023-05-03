@@ -7,11 +7,7 @@ repos:
       - id: trailing-whitespace
   - repo: local
     hooks:
-      - id: echo-hook
-        name: echo hook
+      - id: isort # custom isort hook because of python3.10 compatibility problems
+        name: isort
         entry: "isort ./backend"
         language: "python"
-  # - repo: https://github.com/psf/black
-  #   rev: 22.10.0
-  #   hooks:
-  #     - id: black

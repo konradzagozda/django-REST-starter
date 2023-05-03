@@ -52,8 +52,7 @@ def create_random_users_and_tasks(num_users: int = 1000, num_todos_per_user: int
         email = fake.email()
         password = fake.password()
 
-        user =
-        User.objects.create_user(username=username, email=email, password=password)
+        user = User.objects.create_user(username=username, email=email, password=password)
 
         for _ in range(num_todos_per_user):
             title = fake.sentence(nb_words=3)
