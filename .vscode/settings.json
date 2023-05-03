@@ -15,7 +15,8 @@
 		"todos",
 		"VHOST",
 		"viewsets",
-		"virtualenvs"
+		"virtualenvs",
+		"yapf"
 	],
 	"python.defaultInterpreterPath": "${workspaceFolder}/backend/.venv/bin/python"
 }
