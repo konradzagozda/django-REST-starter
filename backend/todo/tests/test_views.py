@@ -3,10 +3,15 @@ from todo.models import Todo
 
 pytestmark = pytest.mark.django_db
 
+
 class TestTodoViewSet:
+
     def test_todo_viewset_list(self, test_user, api_client):
 
-        Todo.objects.create(user=test_user, title='Test Todo', description='This is a test Todo item.', completed=False)
+        Todo.objects.create(user=test_user,
+                            title='Test Todo',
+                            description='This is a test Todo item.',
+                            completed=False)
         api_client.force_authenticate(user=test_user)
 
         response = api_client.get('/api/todos/')
@@ -20,11 +25,13 @@ class TestTodoViewSet:
     def test_todo_viewset_create(self, test_user, api_client):
         api_client.force_authenticate(user=test_user)
 
-        response = api_client.post('/api/todos/', data={
-            'title': 'Test Todo',
-            'description': 'This is a test Todo item.',
-            'completed': False,
-        })
+        response = api_client.post('/api/todos/',
+                                   data={
+                                       'title': 'Test Todo',
+                                       'description':
+                                       'This is a test Todo item.',
+                                       'completed': False,
+                                   })
 
         assert response.status_code == 201
         assert response.data['title'] == 'Test Todo'

@@ -81,16 +81,20 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME":
+        "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        "NAME":
+        "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
+        "NAME":
+        "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
+        "NAME":
+        "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -107,16 +111,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = env.get("EMAIL_HOST", "mailhog")
 EMAIL_PORT = env.get("EMAIL_PORT", "1025")
-REDIS_URL = (
-    "redis://"
-    + env.get("REDIS_USERNAME", "redis")
-    + ":"
-    + env.get("REDIS_PASSWORD", "redis")
-    + "@"
-    + env.get("REDIS_HOST", "redis")
-    + ":"
-    + env.get("REDIS_PORT", "6379")
-)
+REDIS_URL = ("redis://" + env.get("REDIS_USERNAME", "redis") + ":" +
+             env.get("REDIS_PASSWORD", "redis") + "@" +
+             env.get("REDIS_HOST", "redis") + ":" +
+             env.get("REDIS_PORT", "6379"))
 
 CACHES = {
     "default": {
@@ -134,7 +132,8 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated",
     ],
-    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    "DEFAULT_SCHEMA_CLASS":
+    "drf_spectacular.openapi.AutoSchema",
 }
 
 SITE_ID = 1  # https://dj-rest-auth.readthedocs.io/en/latest/installation.html#registration-optional
@@ -152,18 +151,11 @@ ACCOUNT_EMAIL_VERIFICATION = env.get("ACCOUNT_EMAIL_VERIFICATION", "optional")
 CELERY_TASK_TIME_LIMIT = 30 * 60  # 30 min task limit
 CELERY_CACHE_BACKEND = "django-cache"
 
-CELERY_BROKER_URL = (
-    "amqp://"
-    + env.get("RABBITMQ_USER", "rabbitmq")
-    + ":"
-    + env.get("RABBITMQ_PASSWORD", "rabbitmq")
-    + "@"
-    + env.get("RABBITMQ_HOST", "rabbitmq")
-    + ":"
-    + env.get("RABBITMQ_PORT", "5672")
-    + "/"
-    + env.get("RABBITMQ_VHOST", "backend")
-)
+CELERY_BROKER_URL = ("amqp://" + env.get("RABBITMQ_USER", "rabbitmq") + ":" +
+                     env.get("RABBITMQ_PASSWORD", "rabbitmq") + "@" +
+                     env.get("RABBITMQ_HOST", "rabbitmq") + ":" +
+                     env.get("RABBITMQ_PORT", "5672") + "/" +
+                     env.get("RABBITMQ_VHOST", "backend"))
 
 CELERY_RESULT_BACKEND = f"{REDIS_URL}/{env.get('REDIS_CELERY_RESULT_BACKEND_DB', '2')}"
 

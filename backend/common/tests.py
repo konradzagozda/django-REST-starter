@@ -9,39 +9,36 @@ from django.core.management.base import CommandError
 
 pytestmark = pytest.mark.django_db
 
+
 @pytest.fixture
 def users_data():
-    return [
-        {
-            "username": "admin",
-            "email": "admin@example.com",
-            "first_name": "Admin",
-            "last_name": "User",
-            "password": "admin",
-            "is_superuser": True
-        },
-        {
-            "username": "user1",
-            "email": "user1@example.com",
-            "first_name": "John",
-            "last_name": "Doe",
-            "password": "user1"
-        },
-        {
-            "username": "user2",
-            "email": "user2@example.com",
-            "first_name": "Maria",
-            "last_name": "Doe",
-            "password": "user2"
-        },
-        {
-            "username": "user3",
-            "email": "user3@example.com",
-            "first_name": "Konrad",
-            "last_name": "Doe",
-            "password": "user3"
-        }
-    ]
+    return [{
+        "username": "admin",
+        "email": "admin@example.com",
+        "first_name": "Admin",
+        "last_name": "User",
+        "password": "admin",
+        "is_superuser": True
+    }, {
+        "username": "user1",
+        "email": "user1@example.com",
+        "first_name": "John",
+        "last_name": "Doe",
+        "password": "user1"
+    }, {
+        "username": "user2",
+        "email": "user2@example.com",
+        "first_name": "Maria",
+        "last_name": "Doe",
+        "password": "user2"
+    }, {
+        "username": "user3",
+        "email": "user3@example.com",
+        "first_name": "Konrad",
+        "last_name": "Doe",
+        "password": "user3"
+    }]
+
 
 @pytest.fixture
 def create_fixture_file(tmpdir, users_data):
@@ -49,6 +46,7 @@ def create_fixture_file(tmpdir, users_data):
     with open(file_path, 'w') as file:
         json.dump(users_data, file)
     return str(file_path)
+
 
 def test_load_users_command(create_fixture_file, users_data):
     out = StringIO()
@@ -68,5 +66,6 @@ def test_load_users_command(create_fixture_file, users_data):
 
 def test_load_users_command_invalid_path(db):
     non_existent_file_path = 'non_existent_file.json'
-    with pytest.raises(CommandError, match=f'File not found: {non_existent_file_path}'):
+    with pytest.raises(CommandError,
+                       match=f'File not found: {non_existent_file_path}'):
         call_command('load_users', '--file-path', non_existent_file_path)

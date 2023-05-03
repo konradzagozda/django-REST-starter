@@ -5,7 +5,9 @@ from rest_framework.test import APIClient
 
 @pytest.fixture
 def test_user():
-    return User.objects.create_user(username='test_user', password='test_password')
+    return User.objects.create_user(username='test_user',
+                                    password='test_password')
+
 
 @pytest.fixture
 def api_client():
