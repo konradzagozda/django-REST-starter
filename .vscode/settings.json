@@ -18,5 +18,9 @@
 		"virtualenvs",
 		"yapf"
 	],
-	"python.defaultInterpreterPath": "${workspaceFolder}/backend/.venv/bin/python"
+	"python.defaultInterpreterPath": "${workspaceFolder}/backend/.venv/bin/python",
+	"python.formatting.provider": "yapf",
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": true
+	},
 }
