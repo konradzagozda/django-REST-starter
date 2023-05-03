@@ -1,7 +1,6 @@
 import os
 
-from celery import Celery, shared_task
-from django.apps import apps
+from celery import Celery
 from celery.schedules import crontab
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings.base')
@@ -19,7 +18,6 @@ celery_app.autodiscover_tasks()
 celery_app.conf.beat_schedule = {
     'add-every-30-seconds': {
         'task': 'todo.tasks.send_undone_todos_email_to_all_users',
-        'schedule': crontab(hour=18),
-        # 'args': (16, 16)
+        'schedule': crontab(hour=18)
     },
 }

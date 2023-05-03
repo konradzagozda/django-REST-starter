@@ -1,9 +1,10 @@
 import json
 import os
 from io import StringIO
-from django.core.management import call_command
-from django.contrib.auth.models import User
+
 import pytest
+from django.contrib.auth.models import User
+from django.core.management import call_command
 from django.core.management.base import CommandError
 
 pytestmark = pytest.mark.django_db

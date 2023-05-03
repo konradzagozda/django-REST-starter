@@ -1,11 +1,13 @@
+import pytest
 from django.conf import settings
 from django.contrib.auth.models import User
-import pytest
-from todo.models import Todo
 from django.core import mail
-from todo.tasks import create_random_users_and_tasks, send_undone_todos_email_to_all_users
+from todo.models import Todo
+from todo.tasks import (create_random_users_and_tasks,
+                        send_undone_todos_email_to_all_users)
 
 pytestmark = pytest.mark.django_db
+
 
 class TestUndoneTodos:
     def test_send_undone_todos_email_no_todos(self):

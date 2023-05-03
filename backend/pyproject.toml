@@ -26,6 +26,8 @@ pytest-django = "^4.5.2"
 pytest-xdist = "^3.2.1"
 pytest-cov = "^4.0.0"
 debugpy = "^1.6.7"
+isort = "^5.12.0"
+
 
 [build-system]
 requires = ["poetry-core"]
@@ -55,3 +57,9 @@ omit = [
 	"**/apps.py",
 	"**/admin.py"
 ]
+
+[tool.mypy]
+plugins = ["mypy_django_plugin.main"]
+
+[tool.django-stubs]
+django_settings_module = "backend.settings.base"

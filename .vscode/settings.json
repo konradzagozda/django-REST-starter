@@ -1,0 +1,21 @@
+{
+	"cSpell.words": [
+		"ALLAUTH",
+		"amqp",
+		"authtoken",
+		"debugpy",
+		"devcontainers",
+		"isort",
+		"mailhog",
+		"mkdocs",
+		"pytest",
+		"pytestmark",
+		"rabbitmq",
+		"socialaccount",
+		"todos",
+		"VHOST",
+		"viewsets",
+		"virtualenvs"
+	],
+	"python.defaultInterpreterPath": "${workspaceFolder}/backend/.venv/bin/python"
+}

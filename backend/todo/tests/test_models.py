@@ -1,5 +1,5 @@
-from todo.models import Todo
 import pytest
+from todo.models import Todo
 
 pytestmark = pytest.mark.django_db
 

@@ -6,6 +6,5 @@
 # For full development environment:
 
 - python 3.10
-- pipx
 - poetry
-- recommended editor: vscode
+- vscode

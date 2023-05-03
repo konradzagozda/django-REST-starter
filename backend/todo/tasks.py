@@ -1,15 +1,17 @@
 from celery import shared_task
+from django.conf import settings
+from django.contrib.auth.models import User
+from django.core.mail import EmailMultiAlternatives, send_mail
+from django.template.loader import get_template
 from faker import Faker
 from todo.models import Todo
-from django.contrib.auth.models import User
-from django.template.loader import get_template
-from django.core.mail import EmailMultiAlternatives
-from django.conf import settings
-from django.core.mail import send_mail
 
 
 @shared_task
-def send_undone_todos_email_to_all_users():
+def send_undone_todos_email_to_all_users() -> None:
+    """
+    send undone todos to all of the users
+    """
     users = User.objects.all()
 
     for user in users:
@@ -36,7 +38,13 @@ def send_undone_todos_email_to_all_users():
 
 
 @shared_task
-def create_random_users_and_tasks(num_users=1000, num_todos_per_user=100):
+def create_random_users_and_tasks(num_users: int = 1000, num_todos_per_user: int = 100) -> None:
+    """create random users and tasks
+
+    Args:
+        num_users (int, optional): number of users generated. Defaults to 1000.
+        num_todos_per_user (int, optional): number of todos generated for a user. Defaults to 100.
+    """
     fake = Faker()
 
     for _ in range(num_users):
@@ -44,7 +52,8 @@ def create_random_users_and_tasks(num_users=1000, num_todos_per_user=100):
         email = fake.email()
         password = fake.password()
 
-        user = User.objects.create_user(username=username, email=email, password=password)
+        user =
+        User.objects.create_user(username=username, email=email, password=password)
 
         for _ in range(num_todos_per_user):
             title = fake.sentence(nb_words=3)

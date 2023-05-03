@@ -20,24 +20,6 @@ services:
       - .env
     restart: unless-stopped
 
-  shell:
-    container_name: shell
-    build:
-      context: ./backend
-      dockerfile: Dockerfile.dev
-    command: >-
-      ash -c "python manage.py shell"
-    volumes:
-      - ./backend:/app
-    ports:
-      - 5679:5679
-    depends_on:
-      - postgres
-      - backend
-    env_file:
-      - .env
-    restart: unless-stopped
-
   postgres:
     container_name: postgres
     image: postgres:15

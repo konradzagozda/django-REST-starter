@@ -3,6 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 from todo.models import Todo
 from todo.serializers import TodoSerializer
 
+
 class TodoViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     serializer_class = TodoSerializer

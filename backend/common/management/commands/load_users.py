@@ -1,7 +1,9 @@
-import os
-from django.core.management.base import BaseCommand, CommandError
 import json
+import os
+
 from django.contrib.auth.models import User
+from django.core.management.base import BaseCommand, CommandError
+
 
 class Command(BaseCommand):
     help = 'Load users from a JSON file'
