@@ -12,5 +12,4 @@ jobs:
           services: |
             backend
             postgres
-      - run: cp env/dev.env ./.env
-      - run: ./run-cmd.sh pytest --cov-report term
+      - run: cp env/dev.env .env && ./run-cmd.sh pytest --cov-report term
