@@ -1,7 +1,7 @@
 {
     "Servers": {
         "1": {
-            "Name": "local postgres",
+            "Name": "postgres",
 			"Group": "Servers",
 			"MaintenanceDB": "postgres",
             "Username": "postgres",
