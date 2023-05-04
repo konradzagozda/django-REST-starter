@@ -59,7 +59,8 @@ omit = [
 	"**/tests/**",
 	"conftest.py",
 	"**/apps.py",
-	"**/admin.py"
+	"**/admin.py",
+	"**/settings.py"
 ]
 
 [tool.mypy]
