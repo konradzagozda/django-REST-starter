@@ -8,6 +8,7 @@
 		"autoupdate",
 		"debugpy",
 		"devcontainers",
+		"isbang",
 		"isort",
 		"locmem",
 		"mailhog",
@@ -19,8 +20,8 @@
 		"socialaccount",
 		"todos",
 		"VHOST",
-		"viewsets",
 		"viewset",
+		"viewsets",
 		"virtualenvs",
 		"yapf"
 	],
