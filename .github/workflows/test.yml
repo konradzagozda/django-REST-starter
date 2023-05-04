@@ -8,6 +8,6 @@ jobs:
       - run: |
           set -x
           docker version
-          docker compose up -d backend postgres
           cp dev/.env .env
+          docker compose up -d backend postgres
           ./run-cmd.sh pytest --cov-report term
