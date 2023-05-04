@@ -10,3 +10,4 @@
 backend/htmlcov
 backend/celerybeat-schedule
 backend/db.sqlite3
+.env

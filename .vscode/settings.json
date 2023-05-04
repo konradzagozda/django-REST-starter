@@ -1,26 +1,56 @@
 {
+	"files.autoSave": "onFocusChange",
 	"cSpell.words": [
 		"ALLAUTH",
 		"amqp",
+		"ASGI",
 		"authtoken",
+		"autoupdate",
 		"debugpy",
 		"devcontainers",
 		"isort",
+		"locmem",
 		"mailhog",
 		"mkdocs",
 		"pytest",
 		"pytestmark",
 		"rabbitmq",
+		"Redoc",
 		"socialaccount",
 		"todos",
 		"VHOST",
 		"viewsets",
+		"viewset",
 		"virtualenvs",
 		"yapf"
 	],
-	"python.defaultInterpreterPath": "${workspaceFolder}/backend/.venv/bin/python",
+	"python.defaultInterpreterPath": "backend/.venv/bin/python",
+	"python.terminal.activateEnvironment": true,
+	"python.envFile": ".env",
 	"python.formatting.provider": "yapf",
+	"python.formatting.yapfArgs": [
+		"--style={based_on_style: google, column_limit: 120, indent_width: 4}"
+	],
 	"editor.codeActionsOnSave": {
 		"source.organizeImports": true
 	},
+	"python.linting.enabled": true,
+	"python.linting.lintOnSave": true,
+	"python.linting.maxNumberOfProblems": 1000,
+	"python.linting.ignorePatterns": [
+		"**/site-packages/**/*.py",
+		".vscode/*.py"
+	],
+	"python.analysis.typeCheckingMode": "basic",
+	"python.analysis.diagnosticMode": "workspace",
+	"python.analysis.stubPath": "./backend/typings",
+	"python.linting.pylamaEnabled": true,
+	"python.linting.pylamaArgs": [],
+	// "python.linting.pylamaPath": "${workspaceFolder}/backend/.venv/lib/python3.10/site-packages/pylama",
+	"python.linting.banditEnabled": true,
+	"python.linting.banditArgs": [],
+	// "python.linting.banditPath": "${workspaceFolder}/backend/.venv/lib/python3.10/site-packages/bandit",
+	"python.linting.flake8Enabled": true,
+	"python.linting.flake8Args": [],
+	// "python.linting.flake8Path": "${workspaceFolder}/backend/.venv/lib/python3.10/site-packages/flake8",
 }
