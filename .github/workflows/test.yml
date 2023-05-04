@@ -1,15 +1,16 @@
 name: test backend
 on: [push]
 jobs:
-  check-bats-version:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: isbang/compose-action@v1.4.1
         with:
-          compose-file: "./docker-compose.yml"
+          compose-file: "docker-compose.yml"
           down-flags: "--volumes"
           services: |
             backend
             postgres
+          up-flags: "--env-file .env"
       - run: cp env/dev.env .env && ./run-cmd.sh pytest --cov-report term
