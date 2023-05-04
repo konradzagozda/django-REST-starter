@@ -26,6 +26,7 @@
 		"yapf"
 	],
 	"python.defaultInterpreterPath": "backend/.venv/bin/python",
+	"python.analysis.autoImportCompletions": true,
 	"python.terminal.activateEnvironment": true,
 	"python.envFile": ".env",
 	"python.formatting.provider": "yapf",
