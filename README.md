@@ -1,8 +1,17 @@
 # Overview
 
-## Starting the project
+## Setup
 
-`docker compose up -d`
+### VSCODE with dev containers
+
+1. `f1` > `Dev Containers: open folder in container`
+2. select interpreter - `/backend/.venv/bin/python`
+3. `docker compose up -d`
+4. Enjoy app running with all the extensions prepared!
+
+### Local setup
+
+1. todo
 
 ## Documentation
 

@@ -3,7 +3,7 @@ name = "backend"
 version = "0.1.0"
 description = ""
 authors = ["Konrad Zagozda <zagozdakonrad@gmail.com>"]
-readme = "README.md"
+readme = "../README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -31,7 +31,6 @@ pylama = "^8.4.1"
 bandit = "^1.7.5"
 django-stubs = {extras = ["compatible-mypy"], version = "^4.2.0"}
 djangorestframework-stubs = {extras = ["compatible-mypy"], version = "^3.14.0"}
-
 
 [build-system]
 requires = ["poetry-core"]

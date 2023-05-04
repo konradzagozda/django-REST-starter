@@ -1,0 +1,61 @@
+{
+	"build": {
+		"dockerfile": "Dockerfile.dev"
+	},
+	"postCreateCommand": "set -x && cp env/dev.env .env && cd backend && poetry install",
+	"features": {
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {
+			"dockerDashComposeVersion": "v2"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"aaron-bond.better-comments",
+				"streetsidesoftware.code-spell-checker",
+				"ms-vscode-remote.remote-containers",
+				"ms-azuretools.vscode-docker",
+				"visualstudioexptteam.vscodeintellicode",
+				"ritwickdey.liveserver",
+				"yzhang.markdown-all-in-one",
+				"davidanson.vscode-markdownlint",
+				"mushan.vscode-paste-image",
+				"redhat.vscode-yaml",
+				// javascript
+				"dbaeumer.vscode-eslint",
+				"esbenp.prettier-vscode",
+				// python utils
+				"njpwerner.autodocstring",
+				"spywhere.guides",
+				"ms-python.python",
+				"batisteo.vscode-django",
+				"shamanu4.django-intellisense",
+				"tushortz.python-extended-snippets",
+				"kevinrose.vsc-python-indent",
+				"njqdev.vscode-python-typehint",
+				// python linters and formatters
+				"ms-python.isort",
+				"matangover.mypy",
+				"ms-python.pylint",
+				"ms-python.vscode-pylance",
+				"ms-python.flake8"
+			]
+		}
+	},
+	"forwardPorts": [
+		8000,
+		5678,
+		5679,
+		5432,
+		6379,
+		8081,
+		15672,
+		5672,
+		5555,
+		5050,
+		8025,
+		1025,
+		7000,
+		8888
+	]
+}
