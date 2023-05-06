@@ -2,11 +2,18 @@
 
 ## Setup
 
-Use vscode and devcontainers extension
+Prerequisites:
+- vscode
+- docker
+- dev containers extension
+
 
 1. `f1` > `Dev Containers: Open folder in container`
-2. `cd backend && docker compose up -d` wait until containers are healthy
-3. `./load-data.sh && ./run-server.sh`
+2. Your development enviroment is ready!
+
+navigate to `./backend` and try:
+- `./run-tests.sh`
+- `./run-server.sh`
 
 Services are decoupled from main backend service to have full integration with vscode e.g. test pane is not supported in containerized version.
 
