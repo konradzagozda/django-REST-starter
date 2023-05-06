@@ -1,4 +1,4 @@
-#!/bin/bash -ex
+#/bin/bash -ex
 
 export $(cat .env | xargs)
 
@@ -7,5 +7,4 @@ export REDIS_HOST=localhost
 export RABBITMQ_HOST=localhost
 
 poetry run python manage.py migrate
-poetry run python manage.py load_users
-poetry run python manage.py loaddata todos.json
+poetry run python manage.py runserver

@@ -1,0 +1,35 @@
+{
+    "image": "mcr.microsoft.com/devcontainers/python:3.10-bullseye",
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance"
+            ]
+        },
+        "settings": {
+            "python.formatting.provider": "yapf"
+        }
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/common-utils:2": {},
+        "ghcr.io/devcontainers/features/docker-in-docker:2": {
+            "dockerDashComposeVersion": "v2"
+        }
+    },
+    "postCreateCommand": "bash prepare-dev.sh",
+    "forwardPorts": [
+        5432,
+        6379,
+        8081,
+        15672,
+        5672,
+        5555,
+        5050,
+        8025,
+        1025,
+        7000,
+        8888,
+        8000
+    ]
+}

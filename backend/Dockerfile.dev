@@ -1,4 +1,4 @@
-FROM python:3.10-alpine
+FROM python:3.10-bullseye
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
@@ -6,11 +6,11 @@ ENV PYTHONUNBUFFERED 1
 RUN mkdir /app
 WORKDIR /app
 
-RUN apk update \
-	&& apk add --no-cache \
+RUN apt-get update \
+	&& apt-get install -y --no-install-recommends \
 	gcc \
 	musl-dev \
-	postgresql-dev \
+	libpq-dev \
 	libffi-dev
 
 RUN wget -O - https://install.python-poetry.org | python3 -

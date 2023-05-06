@@ -1,32 +1,6 @@
 {
 	"recommendations": [
-		"aaron-bond.better-comments",
-		"streetsidesoftware.code-spell-checker",
-		"ms-vscode-remote.remote-containers",
-		"ms-azuretools.vscode-docker",
-		"visualstudioexptteam.vscodeintellicode",
-		"ritwickdey.liveserver",
-		"yzhang.markdown-all-in-one",
-		"davidanson.vscode-markdownlint",
-		"mushan.vscode-paste-image",
-		"redhat.vscode-yaml",
-		// javascript
-		"dbaeumer.vscode-eslint",
-		"esbenp.prettier-vscode",
-		// python utils
-		"njpwerner.autodocstring",
-		"spywhere.guides",
 		"ms-python.python",
-		"batisteo.vscode-django",
-		"shamanu4.django-intellisense",
-		"tushortz.python-extended-snippets",
-		"kevinrose.vsc-python-indent",
-		"njqdev.vscode-python-typehint",
-		// python linters and formatters
-		"ms-python.isort",
-		"matangover.mypy",
-		"ms-python.pylint",
-		"ms-python.vscode-pylance",
-		"ms-python.flake8"
+		"ms-python.vscode-pylance"
 	]
 }
