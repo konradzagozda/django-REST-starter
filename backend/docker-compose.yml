@@ -2,22 +2,22 @@ version: '3.9'
 
 services:
 
-  backend:
-    container_name: backend
-    build:
-      context: ./backend
-      dockerfile: Dockerfile.dev
-    command: >-
-      ash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
-    volumes:
-      - ./backend:/app
-    ports:
-      - 8000:8000
-    depends_on:
-      - postgres
-    env_file:
-      - .env
-    restart: unless-stopped
+  # backend:
+  #   container_name: backend
+  #   build:
+  #     context: ./backend
+  #     dockerfile: Dockerfile.dev
+  #   command: >-
+  #     ash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+  #   volumes:
+  #     - ./backend:/app
+  #   ports:
+  #     - 8000:8000
+  #   depends_on:
+  #     - postgres
+  #   env_file:
+  #     - .env
+  #   restart: unless-stopped
 
   postgres:
     container_name: postgres
@@ -69,11 +69,11 @@ services:
   celery-worker:
     container_name: celery-worker
     build:
-      context: ./backend
+      context: .
       dockerfile: Dockerfile.dev
     command: celery -A backend worker -l info
     volumes:
-      - ./backend:/app
+      - .:/app
     depends_on:
       - rabbitmq
     env_file:
@@ -83,11 +83,11 @@ services:
   celery-beat:
     container_name: celery-beat
     build:
-      context: ./backend
+      context: .
       dockerfile: Dockerfile.dev
     command: celery -A backend beat -l info
     volumes:
-      - ./backend:/app
+      - .:/app
     depends_on:
       - rabbitmq
     env_file:
@@ -97,13 +97,13 @@ services:
   flower:
     container_name: flower
     build:
-      context: ./backend
+      context: .
       dockerfile: Dockerfile.dev
     command: celery -A backend flower
     ports:
       - "5555:5555"
     volumes:
-      - ./backend:/app
+      - .:/app
     depends_on:
       - rabbitmq
     env_file:
@@ -145,7 +145,7 @@ services:
     container_name: coverage
     image: halverneus/static-file-server
     volumes:
-      - ./backend/htmlcov:/web
+      - ./htmlcov:/web
     ports:
       - "8888:8080"
     restart: unless-stopped
