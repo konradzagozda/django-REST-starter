@@ -2,16 +2,11 @@
 
 ## Setup
 
-### VSCODE with dev containers
-
-1. `f1` > `Dev Containers: open folder in container`
-2. select interpreter - `/backend/.venv/bin/python`
-3. `docker compose up -d`
-4. Enjoy app running with all the extensions prepared!
-
-### Local setup
-
-1. todo
+1. `cd backend && poetry install && cp env/dev.env .env`
+2. `docker compose up -d` wait until services are healthy
+3. `poetry shell` initialize venv
+4. `python manage.py runserver`
+5. `load-data.sh`
 
 ## Documentation
 
