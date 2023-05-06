@@ -8,6 +8,8 @@
 4. `python manage.py runserver`
 5. `load-data.sh`
 
+Services are decoupled from main backend service to have full integration with vscode e.g. test pane is not supported in containerized version.
+
 ## Documentation
 
 Head to /docs/ or visit <http://127.0.0.1:7000/> for rest of documentation
