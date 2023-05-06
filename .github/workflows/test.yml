@@ -7,7 +7,9 @@ jobs:
       - uses: actions/checkout@v3
       - run: |
           set -x
-          docker version
+          cd backend
           cp env/dev.env .env
-          docker compose up -d backend postgres
-          ./run-cmd.sh pytest --cov-report term
+          docker compose up -d postgres
+          poetry install
+          poetry shell
+          pytest --cov-report term
