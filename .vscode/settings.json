@@ -51,5 +51,5 @@
 		"yapf",
 		"yzhang"
 	],
-	"python.formatting.provider": "yapf"
+	"python.formatting.provider": "yapf",
 }

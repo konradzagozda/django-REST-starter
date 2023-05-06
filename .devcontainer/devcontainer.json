@@ -18,7 +18,7 @@
         }
     },
     "postCreateCommand": "bash prepare-dev.sh",
-    "postStartCommand": "cd backend && docker compose up -d && sleep 15 && ./load-data.sh || ./run-server.sh",
+    "postStartCommand": "cd backend && docker compose up -d && sleep 15 && ./load-data.sh",
     "forwardPorts": [
         5432,
         6379,
