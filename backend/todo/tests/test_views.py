@@ -1,6 +1,3 @@
-"""
-Test todo views
-"""
 import pytest
 from todo.models import Todo
 
@@ -8,9 +5,6 @@ pytestmark = pytest.mark.django_db
 
 
 class TestTodoViewSet:
-    """
-    Test todo views
-    """
 
     def test_todo_viewset_list(self, test_user, api_client):
         """

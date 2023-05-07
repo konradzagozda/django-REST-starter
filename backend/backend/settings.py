@@ -1,7 +1,3 @@
-"""
-Django settings module
-"""
-
 import os
 from pathlib import Path
 

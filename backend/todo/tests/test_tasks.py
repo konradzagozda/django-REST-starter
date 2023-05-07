@@ -1,11 +1,15 @@
+# pylint: disable=E1101
+
 import pytest
 from django.conf import settings
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.core import mail
 from todo.models import Todo
 from todo.tasks import (create_random_users_and_tasks, send_undone_todos_email_to_all_users)
 
 pytestmark = pytest.mark.django_db
+
+User = get_user_model()
 
 
 class TestUndoneTodos:
@@ -46,27 +50,25 @@ class TestUndoneTodos:
         assert 'Todo 2' not in email.body and 'Todo 2' not in email.alternatives[0][0]
 
 
-class TestCreateRandomUsersAndTasks:
+def test_create_random_users_and_tasks():
+    num_users = 10
+    num_todos_per_user = 5
 
-    def test_create_random_users_and_tasks(self):
-        num_users = 10
-        num_todos_per_user = 5
+    create_random_users_and_tasks.apply(args=(num_users, num_todos_per_user))
 
-        create_random_users_and_tasks.apply(args=(num_users, num_todos_per_user))
+    assert User.objects.count() == num_users
+    assert Todo.objects.count() == num_users * num_todos_per_user
 
-        assert User.objects.count() == num_users
-        assert Todo.objects.count() == num_users * num_todos_per_user
+    for user in User.objects.all():
+        todos = Todo.objects.filter(user=user)
+        assert todos.count() == num_todos_per_user
 
-        for user in User.objects.all():
-            todos = Todo.objects.filter(user=user)
-            assert todos.count() == num_todos_per_user
+    assert len(mail.outbox) == 1
 
-        assert len(mail.outbox) == 1
+    email = mail.outbox[0]
+    assert email.subject == 'Random users and tasks created'
+    assert email.from_email == settings.EMAIL_FROM
+    assert email.to == [settings.EMAIL_TO]
 
-        email = mail.outbox[0]
-        assert email.subject == 'Random users and tasks created'
-        assert email.from_email == settings.EMAIL_FROM
-        assert email.to == [settings.EMAIL_TO]
-
-        message = f'Created {num_users} random users, each with {num_todos_per_user} tasks.'
-        assert message in email.body
+    message = f'Created {num_users} random users, each with {num_todos_per_user} tasks.'
+    assert message in email.body

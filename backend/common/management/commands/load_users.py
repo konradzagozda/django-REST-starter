@@ -1,6 +1,3 @@
-"""
-module containing load_users command
-"""
 import json
 import os
 
@@ -11,9 +8,6 @@ User = get_user_model()
 
 
 class Command(BaseCommand):
-    """
-    Load users from a JSON file
-    """
     help = 'Load users from a JSON file'
 
     def add_arguments(self, parser):

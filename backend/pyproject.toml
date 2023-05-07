@@ -29,9 +29,11 @@ pytest-cov = "^4.0.0"
 debugpy = "^1.6.7"
 isort = "^5.12.0"
 pylama = "^8.4.1"
-bandit = {extras = ["toml"], version = "^1.7.5"}
-django-stubs = {extras = ["compatible-mypy"], version = "^4.2.0"}
-djangorestframework-stubs = {extras = ["compatible-mypy"], version = "^3.14.0"}
+bandit = { extras = ["toml"], version = "^1.7.5" }
+django-stubs = { extras = ["compatible-mypy"], version = "^4.2.0" }
+djangorestframework-stubs = { extras = [
+	"compatible-mypy",
+], version = "^3.14.0" }
 yapf = "^0.33.0"
 flake8 = "^6.0.0"
 pylint = "^2.17.4"
@@ -64,7 +66,7 @@ omit = [
 	"conftest.py",
 	"**/apps.py",
 	"**/admin.py",
-	"**/settings.py"
+	"**/settings.py",
 ]
 
 [tool.mypy]
@@ -74,10 +76,7 @@ plugins = ["mypy_django_plugin.main"]
 django_settings_module = "backend.settings"
 
 [tool.yapfignore]
-ignore_patterns = [
-  ".venv",
-  "__pycache__"
-]
+ignore_patterns = [".venv", "__pycache__"]
 
 [tool.bandit]
 exclude_dirs = ["tests", ".venv", "conftest.py"]
@@ -87,11 +86,13 @@ load-plugins = "pylint_django"
 django-settings-module = "backend.settings"
 
 [tool.pylint.master]
-ignore-paths = [
-    ".venv",
-	"backend.venv"
-]
+ignore-paths = [".venv", "backend.venv"]
 init-hook = "import sys; sys.path.append('/workspaces/django-tutorial/backend')"
 
 [tool.pylint.MESSAGE_CONTROL]
-disable = "redefined-outer-name" # pytest has to override fixtures with exact same name
+disable = [
+	"redefined-outer-name",
+	"missing-module-docstring",
+	"missing-class-docstring",
+	"missing-function-docstring",
+]

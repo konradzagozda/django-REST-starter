@@ -10,22 +10,10 @@ User = get_user_model()
 
 
 @pytest.fixture
-def test_user():
-    """create test user
-
-    Returns:
-        User: test user
-    """
-    return User.objects.create_user(username='test_user',
-                                    password='test_password')
+def test_user() -> User:
+    return User.objects.create_user(username='test_user', password='test_password')
 
 
 @pytest.fixture
 def api_client() -> APIClient:
-    """create rest framework APIClient
-
-    Returns:
-        APIClient: rest framework api client
-    """
-
     return APIClient()

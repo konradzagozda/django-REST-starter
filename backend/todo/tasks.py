@@ -1,10 +1,12 @@
 from celery import shared_task
 from django.conf import settings
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.core.mail import EmailMultiAlternatives, send_mail
 from django.template.loader import get_template
 from faker import Faker
 from todo.models import Todo
+
+User = get_user_model()
 
 
 @shared_task
@@ -32,15 +34,13 @@ def send_undone_todos_email_to_all_users() -> None:
         text_content = text_template.render(context)
         html_content = html_template.render(context)
 
-        msg = EmailMultiAlternatives(subject, text_content, from_email,
-                                     [to_email])
+        msg = EmailMultiAlternatives(subject, text_content, from_email, [to_email])
         msg.attach_alternative(html_content, 'text/html')
         msg.send()
 
 
 @shared_task
-def create_random_users_and_tasks(num_users: int = 1000,
-                                  num_todos_per_user: int = 100) -> None:
+def create_random_users_and_tasks(num_users: int = 1000, num_todos_per_user: int = 100) -> None:
     """create random users and tasks
 
     Args:
@@ -54,9 +54,7 @@ def create_random_users_and_tasks(num_users: int = 1000,
         email = fake.email()
         password = fake.password()
 
-        user = User.objects.create_user(username=username,
-                                        email=email,
-                                        password=password)
+        user = User.objects.create_user(username=username, email=email, password=password)
 
         for _ in range(num_todos_per_user):
             title = fake.sentence(nb_words=3)

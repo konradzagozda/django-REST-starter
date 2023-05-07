@@ -1,6 +1,3 @@
-"""
-celery module
-"""
 import os
 
 from celery import Celery
