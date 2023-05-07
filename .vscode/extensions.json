@@ -6,6 +6,6 @@
 		"njpwerner.autodocstring"
 	],
 	"unwantedRecommendations": [
-		"ms-python.pylint" // python extension handles all linting with pluggables
+		"ms-python.pylint" // python extension handles all linting with pluggables including pylint
 	]
 }

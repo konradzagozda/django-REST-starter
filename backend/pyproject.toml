@@ -92,3 +92,6 @@ ignore-paths = [
 	"backend.venv"
 ]
 init-hook = "import sys; sys.path.append('/workspaces/django-tutorial/backend')"
+
+[tool.pylint.MESSAGE_CONTROL]
+disable = "redefined-outer-name" # pytest has to override fixtures with exact same name

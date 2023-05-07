@@ -88,20 +88,16 @@ DATABASES = {
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME":
-        "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        "NAME":
-        "django.contrib.auth.password_validation.MinimumLengthValidator",
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        "NAME":
-        "django.contrib.auth.password_validation.CommonPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        "NAME":
-        "django.contrib.auth.password_validation.NumericPasswordValidator",
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -131,14 +127,9 @@ CACHES = {
 # END DJANGO
 
 REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": [
-        "rest_framework.authentication.TokenAuthentication",
-    ],
-    "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.IsAuthenticated",
-    ],
-    "DEFAULT_SCHEMA_CLASS":
-    "drf_spectacular.openapi.AutoSchema",
+    "DEFAULT_AUTHENTICATION_CLASSES": ["rest_framework.authentication.TokenAuthentication",],
+    "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticated",],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
 }
 
 SITE_ID = 1  # https://dj-rest-auth.readthedocs.io/en/latest/installation.html#registration-optional
@@ -157,10 +148,8 @@ CELERY_TASK_TIME_LIMIT = 30 * 60  # 30 min task limit
 CELERY_CACHE_BACKEND = "django-cache"
 
 CELERY_BROKER_URL = ("amqp://" + env.get("RABBITMQ_USER", "") + ":" +
-                     env.get('RABBITMQ_PASSWORD', "") + "@" +
-                     env.get("RABBITMQ_HOST", "") + ":" +
-                     env.get("RABBITMQ_PORT", "") + "/" +
-                     env.get("RABBITMQ_VHOST", ""))
+                     env.get('RABBITMQ_PASSWORD', "") + "@" + env.get("RABBITMQ_HOST", "") + ":" +
+                     env.get("RABBITMQ_PORT", "") + "/" + env.get("RABBITMQ_VHOST", ""))
 
 CELERY_RESULT_BACKEND = f"{REDIS_URL}/{env.get('REDIS_CELERY_RESULT_BACKEND_DB', '')}"
 

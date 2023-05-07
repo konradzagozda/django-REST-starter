@@ -1,16 +1,24 @@
+"""
+Test module for common app
+"""
 import json
 from io import StringIO
 
 import pytest
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.core.management import call_command
 from django.core.management.base import CommandError
+
+User = get_user_model()
 
 pytestmark = pytest.mark.django_db
 
 
 @pytest.fixture
 def users_data():
+    """
+    fixture that creates 4 users
+    """
     return [{
         "username": "admin",
         "email": "admin@example.com",
@@ -41,13 +49,19 @@ def users_data():
 
 @pytest.fixture
 def create_fixture_file(tmpdir, users_data):
+    """
+    create file with users inside and return path to it
+    """
     file_path = tmpdir.join('users.json')
-    with open(file_path, 'w') as file:
+    with open(file_path, 'w', encoding='utf-8') as file:
         json.dump(users_data, file)
     return str(file_path)
 
 
 def test_load_users_command(create_fixture_file, users_data):
+    """
+    Test load_users command
+    """
     out = StringIO()
     call_command('load_users', '--file-path', create_fixture_file, stdout=out)
 
@@ -63,8 +77,10 @@ def test_load_users_command(create_fixture_file, users_data):
     assert 'Successfully loaded 4 users' in out.getvalue()
 
 
-def test_load_users_command_invalid_path(db):
+def test_load_users_command_invalid_path():
+    """
+    Test load_users command on invalid path
+    """
     non_existent_file_path = 'non_existent_file.json'
-    with pytest.raises(CommandError,
-                       match=f'File not found: {non_existent_file_path}'):
+    with pytest.raises(CommandError, match=f'File not found: {non_existent_file_path}'):
         call_command('load_users', '--file-path', non_existent_file_path)

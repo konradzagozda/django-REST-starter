@@ -1,5 +1,6 @@
 {
 	"files.autoSave": "onFocusChange",
+	"files.insertFinalNewline": true,
 	"editor.formatOnSave": true,
 	"editor.wordWrap": "on",
 	"cSpell.words": [
@@ -56,6 +57,10 @@
 	"python.linting.maxNumberOfProblems": 300,
 	"python.envFile": "${workspaceFolder}/backend/.env",
 	"python.formatting.provider": "yapf",
+	"python.formatting.yapfArgs": [
+		"--style",
+		"${workspaceFolder}/backend/.style.yapf"
+	],
 	"python.analysis.autoImportCompletions": true,
 	"python.analysis.packageIndexDepths": [
 		{
@@ -84,4 +89,9 @@
 		"--rcfile",
 		"${workspaceFolder}/backend/pyproject.toml"
 	],
+	"python.linting.flake8Enabled": true,
+	"python.linting.flake8Args": [
+		"--config",
+		"${workspaceFolder}/backend/.flake8"
+	]
 }

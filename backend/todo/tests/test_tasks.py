@@ -3,8 +3,7 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.core import mail
 from todo.models import Todo
-from todo.tasks import (create_random_users_and_tasks,
-                        send_undone_todos_email_to_all_users)
+from todo.tasks import (create_random_users_and_tasks, send_undone_todos_email_to_all_users)
 
 pytestmark = pytest.mark.django_db
 
@@ -16,14 +15,8 @@ class TestUndoneTodos:
                                         email='testuser@example.com',
                                         password='testpassword')
 
-        Todo.objects.create(user=user,
-                            title='Todo 1',
-                            description='Test todo 1',
-                            completed=True)
-        Todo.objects.create(user=user,
-                            title='Todo 2',
-                            description='Test todo 2',
-                            completed=True)
+        Todo.objects.create(user=user, title='Todo 1', description='Test todo 1', completed=True)
+        Todo.objects.create(user=user, title='Todo 2', description='Test todo 2', completed=True)
 
         # Call the Celery task (using .apply() to call it synchronously)
         send_undone_todos_email_to_all_users.apply()
@@ -35,16 +28,9 @@ class TestUndoneTodos:
                                         email='testuser@example.com',
                                         password='testpassword')
 
-        Todo.objects.create(user=user,
-                            title='Todo 1',
-                            description='Test todo 1')
-        Todo.objects.create(user=user,
-                            title='Todo 2',
-                            description='Test todo 2',
-                            completed=True)
-        Todo.objects.create(user=user,
-                            title='Todo 3',
-                            description='Test todo 3')
+        Todo.objects.create(user=user, title='Todo 1', description='Test todo 1')
+        Todo.objects.create(user=user, title='Todo 2', description='Test todo 2', completed=True)
+        Todo.objects.create(user=user, title='Todo 3', description='Test todo 3')
 
         send_undone_todos_email_to_all_users.apply()
 
@@ -57,8 +43,7 @@ class TestUndoneTodos:
 
         assert 'Todo 1' in email.body or 'Todo 1' in email.alternatives[0][0]
         assert 'Todo 3' in email.body or 'Todo 3' in email.alternatives[0][0]
-        assert 'Todo 2' not in email.body and 'Todo 2' not in email.alternatives[
-            0][0]
+        assert 'Todo 2' not in email.body and 'Todo 2' not in email.alternatives[0][0]
 
 
 class TestCreateRandomUsersAndTasks:
@@ -67,8 +52,7 @@ class TestCreateRandomUsersAndTasks:
         num_users = 10
         num_todos_per_user = 5
 
-        create_random_users_and_tasks.apply(args=(num_users,
-                                                  num_todos_per_user))
+        create_random_users_and_tasks.apply(args=(num_users, num_todos_per_user))
 
         assert User.objects.count() == num_users
         assert Todo.objects.count() == num_users * num_todos_per_user
