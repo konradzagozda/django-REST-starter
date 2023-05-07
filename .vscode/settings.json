@@ -69,4 +69,7 @@
 			"includeAllSymbols": true
 		}
 	],
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": true
+	},
 }
