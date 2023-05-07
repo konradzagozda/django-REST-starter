@@ -93,5 +93,9 @@
 	"python.linting.flake8Args": [
 		"--config",
 		"${workspaceFolder}/backend/.flake8"
+	],
+	"isort.args": [
+		"--settings-path",
+		"${workspaceFolder}/backend/pyproject.toml"
 	]
 }

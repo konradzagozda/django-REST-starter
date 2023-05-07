@@ -1,9 +1,11 @@
 from celery import shared_task
 from django.conf import settings
 from django.contrib.auth import get_user_model
-from django.core.mail import EmailMultiAlternatives, send_mail
+from django.core.mail import EmailMultiAlternatives
+from django.core.mail import send_mail
 from django.template.loader import get_template
 from faker import Faker
+
 from todo.models import Todo
 
 User = get_user_model()

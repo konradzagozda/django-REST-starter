@@ -1,5 +1,6 @@
-import pytest
 from django.contrib.auth import get_user_model
+import pytest
+
 from todo.models import Todo
 
 pytestmark = pytest.mark.django_db

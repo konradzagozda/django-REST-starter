@@ -2,8 +2,8 @@
 This module provides project-wide fixtures for pytest
 """
 
-import pytest
 from django.contrib.auth import get_user_model
+import pytest
 from rest_framework.test import APIClient
 
 User = get_user_model()

@@ -1,11 +1,13 @@
 # pylint: disable=E1101
 
-import pytest
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core import mail
+import pytest
+
 from todo.models import Todo
-from todo.tasks import (create_random_users_and_tasks, send_undone_todos_email_to_all_users)
+from todo.tasks import create_random_users_and_tasks
+from todo.tasks import send_undone_todos_email_to_all_users
 
 pytestmark = pytest.mark.django_db
 
