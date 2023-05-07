@@ -15,4 +15,4 @@ jobs:
           docker compose up -d postgres
           pipx install poetry
           poetry install
-          poetry run pytest --cov-report term
+          ./run-tests.sh
