@@ -1,5 +1,7 @@
 {
+	"files.autoSave": "onFocusChange",
 	"editor.formatOnSave": true,
+	"editor.wordWrap": "on",
 	"cSpell.words": [
 		"ALLAUTH",
 		"amqp",
@@ -51,5 +53,20 @@
 		"yapf",
 		"yzhang"
 	],
+	"python.linting.maxNumberOfProblems": 300,
 	"python.formatting.provider": "yapf",
+	"python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf",
+	"python.analysis.autoImportCompletions": true,
+	"python.analysis.packageIndexDepths": [
+		{
+			"name": "django",
+			"depth": 10,
+			"includeAllSymbols": true
+		},
+		{
+			"name": "rest_framework",
+			"depth": 10,
+			"includeAllSymbols": true
+		}
+	],
 }
