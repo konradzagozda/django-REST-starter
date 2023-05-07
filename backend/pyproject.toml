@@ -28,7 +28,7 @@ pytest-cov = "^4.0.0"
 debugpy = "^1.6.7"
 isort = "^5.12.0"
 pylama = "^8.4.1"
-bandit = "^1.7.5"
+bandit = {extras = ["toml"], version = "^1.7.5"}
 django-stubs = {extras = ["compatible-mypy"], version = "^4.2.0"}
 djangorestframework-stubs = {extras = ["compatible-mypy"], version = "^3.14.0"}
 yapf = "^0.33.0"
@@ -75,3 +75,6 @@ ignore_patterns = [
   ".venv",
   "__pycache__"
 ]
+
+[tool.bandit]
+exclude_dirs = ["tests", ".venv", "conftest.py"]

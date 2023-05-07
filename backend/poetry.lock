@@ -79,6 +79,7 @@ GitPython = ">=1.0.1"
 PyYAML = ">=5.3.1"
 rich = "*"
 stevedore = ">=1.20.0"
+tomli = {version = ">=1.1.0", optional = true, markers = "python_version < \"3.11\" and extra == \"toml\""}
 
 [package.extras]
 test = ["beautifulsoup4 (>=4.8.0)", "coverage (>=4.5.4)", "fixtures (>=3.0.0)", "flake8 (>=4.0.0)", "pylint (==1.9.4)", "stestr (>=2.5.0)", "testscenarios (>=0.5.0)", "testtools (>=2.3.0)", "tomli (>=1.1.0)"]
@@ -1914,4 +1915,4 @@ tomli = ">=2.0.1"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "365b10f7163fe373c9e782b9d33483d3a9c35c63518292d23f2fe34af758be52"
+content-hash = "d96e59d5ac51ad57df08a533f5b2ba5a38258a9a1a11b99689d0e1ceaf64b6b1"

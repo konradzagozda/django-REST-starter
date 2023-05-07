@@ -76,4 +76,5 @@
 	"python.linting.enabled": true,
 	"python.linting.banditEnabled": true,
 	"python.linting.banditPath": "${workspaceFolder}/backend/.venv/bin/bandit",
+	"workbench.tree.indent": 30
 }
