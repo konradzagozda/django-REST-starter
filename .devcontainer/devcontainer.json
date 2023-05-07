@@ -1,5 +1,8 @@
 {
-    "image": "mcr.microsoft.com/devcontainers/python:3.10-bullseye",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "remoteUser": "root",
     "customizations": {
         "vscode": {
             "extensions": [
@@ -19,7 +22,7 @@
         }
     },
     "postCreateCommand": "bash prepare-dev.sh",
-    "postStartCommand": "cd backend && docker compose up -d && sleep 15 && ./load-data.sh",
+    "postStartCommand": "cd backend && sudo poetry install && docker compose up -d && sleep 15 && ./load-data.sh",
     "forwardPorts": [
         5432,
         6379,

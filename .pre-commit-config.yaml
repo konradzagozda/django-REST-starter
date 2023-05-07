@@ -18,10 +18,20 @@ repos:
     rev: v0.33.0
     hooks:
       - id: yapf
-
   - repo: https://github.com/PyCQA/bandit
     rev: 1.7.5
     hooks:
     - id: bandit
       args: ["-c", "backend/pyproject.toml"]
       additional_dependencies: ["bandit[toml]"]
+  - repo: local
+    hooks:
+      - id: pylint
+        name: pylint
+        entry: pylint
+        language: system
+        types: [python]
+        args:
+          [
+            "--rcfile=backend/pyproject.toml"
+          ]

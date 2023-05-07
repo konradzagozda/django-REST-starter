@@ -54,8 +54,8 @@
 		"yzhang"
 	],
 	"python.linting.maxNumberOfProblems": 300,
+	"python.envFile": "${workspaceFolder}/backend/.env",
 	"python.formatting.provider": "yapf",
-	"python.formatting.yapfPath": "${workspaceFolder}/backend/.venv/bin/yapf",
 	"python.analysis.autoImportCompletions": true,
 	"python.analysis.packageIndexDepths": [
 		{
@@ -75,6 +75,13 @@
 	"isort.importStrategy": "fromEnvironment",
 	"python.linting.enabled": true,
 	"python.linting.banditEnabled": true,
-	"python.linting.banditPath": "${workspaceFolder}/backend/.venv/bin/bandit",
-	"workbench.tree.indent": 30
+	"python.linting.banditArgs": [
+		"-c",
+		"${workspaceFolder}/backend/pyproject.toml"
+	],
+	"python.linting.pylintEnabled": true,
+	"python.linting.pylintArgs": [
+		"--rcfile",
+		"${workspaceFolder}/backend/pyproject.toml"
+	],
 }

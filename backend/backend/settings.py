@@ -1,24 +1,20 @@
-import logging
+"""
+Django settings module
+"""
+
 import os
 from pathlib import Path
 
-from django.conf import settings
-from django.core.exceptions import ImproperlyConfigured
-
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-logger = logging.getLogger(__name__)
 
 env = os.environ
 
-try:
-    loaded = env['LOADED']
-except KeyError:
-    raise ImproperlyConfigured('Environment file is not loaded')
+if env.get('LOADED') is None:
+    print('Seems like environment file is not loaded')
 
 # BEGIN DJANGO
-DEBUG = env["DJANGO_DEBUG"]
-SECRET_KEY = env["DJANGO_SECRET_KEY"]
+DEBUG = env.get("DJANGO_DEBUG", "")
+SECRET_KEY = env.get("DJANGO_SECRET_KEY", "")
 
 ALLOWED_HOSTS = ["*"]
 
@@ -82,10 +78,10 @@ WSGI_APPLICATION = "backend.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": env["DB_NAME"],
-        "USER": env["DB_USER"],
-        "PASSWORD": env["DB_PASSWORD"],
-        "HOST": env["DB_HOST"],
+        "NAME": env.get("DB_NAME", ""),
+        "USER": env.get("DB_USER", ""),
+        "PASSWORD": env.get("DB_PASSWORD", ""),
+        "HOST": env.get("DB_HOST", ""),
         "PORT": 5432,
     }
 }
@@ -120,15 +116,15 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST = env["EMAIL_HOST"]
-EMAIL_PORT = env["EMAIL_PORT"]
-REDIS_URL = "redis://" + env["REDIS_USERNAME"] + ":" + env["REDIS_PASSWORD"] + \
-            "@" + env["REDIS_HOST"] + ":" + env["REDIS_PORT"]
+EMAIL_HOST = env.get("EMAIL_HOST", "")
+EMAIL_PORT = env.get("EMAIL_PORT", "")
+REDIS_URL = "redis://" + env.get("REDIS_USERNAME", "") + ":" + env.get("REDIS_PASSWORD", "") + \
+            "@" + env.get("REDIS_HOST", "") + ":" + env.get("REDIS_PORT", "")
 
 CACHES = {
     "default": {
         "BACKEND": "django.core.cache.backends.redis.RedisCache",
-        "LOCATION": REDIS_URL + "/" + env["REDIS_CACHE_DB"],
+        "LOCATION": REDIS_URL + "/" + env.get("REDIS_CACHE_DB", ""),
     }
 }
 
@@ -155,24 +151,19 @@ SPECTACULAR_SETTINGS = {  # drf-spectacular
 }
 
 # ALLAUTH
-ACCOUNT_EMAIL_VERIFICATION = env["ACCOUNT_EMAIL_VERIFICATION"]
+ACCOUNT_EMAIL_VERIFICATION = env.get("ACCOUNT_EMAIL_VERIFICATION", "")
 
 CELERY_TASK_TIME_LIMIT = 30 * 60  # 30 min task limit
 CELERY_CACHE_BACKEND = "django-cache"
 
-CELERY_BROKER_URL = ("amqp://" + env["RABBITMQ_USER"] + ":" +
-                     env['RABBITMQ_PASSWORD'] + "@" + env["RABBITMQ_HOST"] +
-                     ":" + env["RABBITMQ_PORT"] + "/" + env["RABBITMQ_VHOST"])
+CELERY_BROKER_URL = ("amqp://" + env.get("RABBITMQ_USER", "") + ":" +
+                     env.get('RABBITMQ_PASSWORD', "") + "@" +
+                     env.get("RABBITMQ_HOST", "") + ":" +
+                     env.get("RABBITMQ_PORT", "") + "/" +
+                     env.get("RABBITMQ_VHOST", ""))
 
-CELERY_RESULT_BACKEND = f"{REDIS_URL}/{env['REDIS_CELERY_RESULT_BACKEND_DB']}"
+CELERY_RESULT_BACKEND = f"{REDIS_URL}/{env.get('REDIS_CELERY_RESULT_BACKEND_DB', '')}"
 
 # Custom Settings
-EMAIL_FROM = env["EMAIL_FROM"]
-EMAIL_TO = env["EMAIL_TO"]
-
-if settings.DEBUG:
-    logger.debug("\nDjango settings:")
-    for setting in dir(settings):
-        if setting.isupper():
-            value = getattr(settings, setting)
-            logger.debug(f"{setting} = {value}")
+EMAIL_FROM = env.get("EMAIL_FROM", "")
+EMAIL_TO = env.get("EMAIL_TO", "")

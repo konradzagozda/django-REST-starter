@@ -20,6 +20,7 @@ redis = "^4.5.4"
 faker = "^18.6.0"
 flower = "^1.2.0"
 
+
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.3.1"
 pytest-django = "^4.5.2"
@@ -33,6 +34,8 @@ django-stubs = {extras = ["compatible-mypy"], version = "^4.2.0"}
 djangorestframework-stubs = {extras = ["compatible-mypy"], version = "^3.14.0"}
 yapf = "^0.33.0"
 flake8 = "^6.0.0"
+pylint = "^2.17.4"
+pylint-django = "^2.5.3"
 
 [build-system]
 requires = ["poetry-core"]
@@ -78,3 +81,14 @@ ignore_patterns = [
 
 [tool.bandit]
 exclude_dirs = ["tests", ".venv", "conftest.py"]
+
+[tool.pylint]
+load-plugins = "pylint_django"
+django-settings-module = "backend.settings"
+
+[tool.pylint.master]
+ignore-paths = [
+    ".venv",
+	"backend.venv"
+]
+init-hook = "import sys; sys.path.append('/workspaces/django-tutorial/backend')"
