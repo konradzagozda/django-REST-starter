@@ -1879,7 +1879,22 @@ files = [
     {file = "wcwidth-0.2.6.tar.gz", hash = "sha256:a5220780a404dbe3353789870978e472cfe477761f06ee55077256e509b156d0"},
 ]
 
+[[package]]
+name = "yapf"
+version = "0.33.0"
+description = "A formatter for Python code."
+category = "dev"
+optional = false
+python-versions = "*"
+files = [
+    {file = "yapf-0.33.0-py2.py3-none-any.whl", hash = "sha256:4c2b59bd5ffe46f3a7da48df87596877189148226ce267c16e8b44240e51578d"},
+    {file = "yapf-0.33.0.tar.gz", hash = "sha256:da62bdfea3df3673553351e6246abed26d9fe6780e548a5af9e70f6d2b4f5b9a"},
+]
+
+[package.dependencies]
+tomli = ">=2.0.1"
+
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "22e61720b16b1d13f125d1c9e4422ba73d7a96fb3a6cdf21130e12dee4c0735e"
+content-hash = "630652eac99f206c11c60fff3002857880842518a875992e16d3a11f89580ac6"

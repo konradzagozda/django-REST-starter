@@ -55,7 +55,7 @@
 	],
 	"python.linting.maxNumberOfProblems": 300,
 	"python.formatting.provider": "yapf",
-	"python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf",
+	"python.formatting.yapfPath": "${workspaceFolder}/backend/.venv/bin/yapf",
 	"python.analysis.autoImportCompletions": true,
 	"python.analysis.packageIndexDepths": [
 		{
@@ -72,4 +72,8 @@
 	"editor.codeActionsOnSave": {
 		"source.organizeImports": true
 	},
+	"isort.importStrategy": "fromEnvironment",
+	"python.linting.enabled": true,
+	"python.linting.banditEnabled": true,
+	"python.linting.banditPath": "${workspaceFolder}/backend/.venv/bin/bandit",
 }
