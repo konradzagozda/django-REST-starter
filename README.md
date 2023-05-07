@@ -1,6 +1,6 @@
 ## Overview
 
-[![build and test](https://github.com/konradzagozda/django-REST-starter/actions/workflows/test.yml/badge.svg)]
+[![build and test](https://github.com/konradzagozda/django-REST-starter/actions/workflows/test.yml/badge.svg)](https://github.com/konradzagozda/django-REST-starter/actions)
 
 ## Tools
 
