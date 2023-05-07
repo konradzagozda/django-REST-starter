@@ -4,14 +4,14 @@
 
 Template for starting Django Rest Framework projects
 
-Click to preview the project in cloudspaces 👇
+👇👇 Click to preview the project in cloudspaces
 
 [![VS Code Container](https://img.shields.io/static/v1?label=VS+Code&message=Container&logo=visualstudiocode&color=007ACC&logoColor=007ACC&labelColor=2C2C32)](https://open.vscode.dev/konradzagozda/django-REST-starter)
 
 ## Tools
 
 ### Formatters
-- yapf
+[![yapf](https://img.shields.io/badge/python-yapf-green)](https://github.com/google/yapf)
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 
 
@@ -38,4 +38,4 @@ Services are decoupled from main backend service to have full integration with v
 
 ## Documentation
 
-Head to /docs/ or visit <http://127.0.0.1:7000/> for rest of documentation
+Head to `backend/docs/` or visit <http://127.0.0.1:7000/> for rest of documentation
