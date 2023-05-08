@@ -8,9 +8,18 @@ repos:
       - id: check-yaml
       - id: end-of-file-fixer
       - id: trailing-whitespace
+      - id: check-json
+        exclude: ^(\.vscode|\.devcontainer)/
+      - id: check-added-large-files
+      - id: check-ast
+      - id: check-byte-order-marker
+      - id: check-builtin-literals
+      - id: check-case-conflict
+      - id: check-docstring-first
+      - id: check-executables-have-shebangs
   - repo: local
     hooks:
-      - id: isort # custom isort hook because of python3.10 compatibility problems
+      - id: isort
         name: isort
         entry: "isort ./backend"
         language: "python"

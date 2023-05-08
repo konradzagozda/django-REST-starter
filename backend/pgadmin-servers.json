@@ -2,12 +2,12 @@
     "Servers": {
         "1": {
             "Name": "postgres",
-			"Group": "Servers",
-			"MaintenanceDB": "postgres",
+            "Group": "Servers",
+            "MaintenanceDB": "postgres",
             "Username": "postgres",
             "Port": 5432,
             "Host": "postgres",
-			"SSLMode": "prefer"
+            "SSLMode": "prefer"
         }
-	}
+    }
 }

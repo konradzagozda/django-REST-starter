@@ -11,27 +11,31 @@ Template for starting Django Rest Framework projects
 ## Tools
 
 ### Formatters
+
 [![yapf](https://img.shields.io/badge/python-yapf-green)](https://github.com/google/yapf)
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
-
 
 ### Linters
 
 [![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
-[![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/pylint-dev/pylint) + pylint-django
+[![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/pylint-dev/pylint)
+[![linting: flake8](https://img.shields.io/badge/linting-flake8-blue)](https://flake8.pycqa.org/)
 
 ## Setup
 
 Prerequisites:
+
 - vscode
 - docker
 - dev containers extension
 
+### Setup:
 
 1. `f1` > `Dev Containers: Open folder in container`
 2. Your development enviroment is ready!
 
 navigate to `./backend` and try:
+
 - `./run-tests.sh`
 - `./run-server.sh`
 
