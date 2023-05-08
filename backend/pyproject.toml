@@ -92,7 +92,13 @@ ignore-paths = [".venv", "backend.venv"]
 init-hook = "import sys; sys.path.append('/workspaces/django-tutorial/backend')"
 
 [tool.pylint.MESSAGE_CONTROL]
-disable = ["W0621", "C0114", "C0115", "C0116", "C0103", "R0901"]
+disable = [
+	"W0621", # redefined-outer-name for pytest
+	"C0114", # missing-module-docstring, pydocstyle handles it
+	"C0115", # missing-class-docstring, pydocstyle handles it
+	"C0116", # missing-function-docstring, pydocstyle handles it
+	"R0901", # too-many-ancestors
+]
 
 [tool.isort]
 line_length = 100

@@ -6,9 +6,24 @@
     "customizations": {
         "vscode": {
             "extensions": [
+                "ms-azuretools.vscode-docker",
+                "ms-vscode-remote.remote-containers",
+                "yzhang.markdown-all-in-one",
+                "davidanson.vscode-markdownlint",
+                "mushan.vscode-paste-image",
+                "streetsidesoftware.code-spell-checker",
+                "eamodio.gitlens",
+                "github.vscode-github-actions",
+                "redhat.vscode-yaml",
+                "tamasfe.even-better-toml",
+                // python
                 "ms-python.python",
                 "ms-python.vscode-pylance",
-                "ms-python.isort"
+                "ms-python.isort",
+                "njpwerner.autodocstring",
+                "batisteo.vscode-django",
+                // js
+                "dbaeumer.vscode-eslint"
             ]
         },
         "settings": {
@@ -22,7 +37,7 @@
         }
     },
     "postCreateCommand": "bash prepare-dev.sh",
-    "postStartCommand": "cd backend && sudo poetry install && docker compose up -d && sleep 15 && ./load-data.sh",
+    "postStartCommand": "cd backend && sudo poetry install && docker compose up -d && sleep 10 && ./load-data.sh",
     "forwardPorts": [
         5432,
         6379,

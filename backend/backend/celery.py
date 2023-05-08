@@ -1,3 +1,4 @@
+"""Celery init module."""
 import os
 
 from celery import Celery
