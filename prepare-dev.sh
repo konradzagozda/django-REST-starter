@@ -1,4 +1,7 @@
-#!/usr/bin/env bash -ex
-python -m pip install yapf poetry pre-commit isort
+#!/usr/bin/env bash
+
+set -ex
+
+python -m pip install poetry
 
 cp backend/env/dev.env backend/.env
