@@ -2,44 +2,33 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"preLaunchTask": "docker compose debug up",
 			"name": "Django",
 			"type": "python",
-			"request": "attach",
-			"port": 5678,
-			"host": "localhost",
-			"pathMappings": [
-				{
-					"localRoot": "${workspaceFolder}/backend",
-					"remoteRoot": "/app"
-				}
+			"request": "launch",
+			"program": "${workspaceFolder}/backend/manage.py",
+			"args": [
+				"runserver"
 			],
+			"django": true,
+			"env": {
+				"DB_HOST": "localhost",
+				"REDIS_HOST": "localhost",
+				"RABBITMQ_HOST": "localhost"
+			}
 		},
 		{
-			"name": "Shell",
+			"name": "Django Shell",
 			"type": "python",
-			"request": "attach",
-			"port": 5679,
-			"host": "localhost",
-			"pathMappings": [
-				{
-					"localRoot": "${workspaceFolder}/backend",
-					"remoteRoot": "/app"
-				}
+			"request": "launch",
+			"program": "${workspaceFolder}/backend/manage.py",
+			"args": [
+				"shell"
 			],
-			"presentation": {
-				"hidden": true,
+			"env": {
+				"DB_HOST": "localhost",
+				"REDIS_HOST": "localhost",
+				"RABBITMQ_HOST": "localhost"
 			}
-		}
-	],
-	"compounds": [
-		{
-			"name": "Django + Shell",
-			"configurations": [
-				"Django",
-				"Shell"
-			],
-			"stopAll": true,
 		}
 	]
 }
