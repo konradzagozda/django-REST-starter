@@ -1,3 +1,5 @@
+# README.md
+
 [![build and test](https://github.com/konradzagozda/django-REST-starter/actions/workflows/test.yml/badge.svg)](https://github.com/konradzagozda/django-REST-starter/actions)
 
 ## Overview
@@ -24,19 +26,18 @@ Template for starting Django Rest Framework projects
 [![linting: flake8](https://img.shields.io/badge/linting-flake8-blue)](https://flake8.pycqa.org/)
 [![docstyle: pydocstyle](https://img.shields.io/badge/docstyle-pydocstyle-blue)](https://github.com/PyCQA/pydocstyle)
 
-
 ## Setup
 
-Prerequisites:
+### Prerequisites
 
 - vscode
 - docker
 - dev containers extension
 
-### Setup:
+### Steps
 
 1. `f1` > `Dev Containers: Open folder in container`
-2. Your development enviroment is ready!
+2. Your development environment is ready!
 
 navigate to `./backend` and try:
 

@@ -17,6 +17,7 @@
 		"debugpy",
 		"devcontainer",
 		"devcontainers",
+		"docstyle",
 		"dotenv",
 		"eamodio",
 		"esbenp",
