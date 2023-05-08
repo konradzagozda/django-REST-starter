@@ -1,10 +1,9 @@
-from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 import pytest
 
 from todo.models import Todo
 
 pytestmark = pytest.mark.django_db
-User = get_user_model()
 
 
 class TestTodoModel:

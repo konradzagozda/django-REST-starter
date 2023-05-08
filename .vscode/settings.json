@@ -106,5 +106,13 @@
 		"--settings-path",
 		"${workspaceFolder}/backend/pyproject.toml"
 	],
-	"python.linting.pydocstyleEnabled": true
+	"python.linting.pydocstyleEnabled": true,
+	"python.linting.mypyEnabled": true,
+	"python.linting.mypyArgs": [
+		"--follow-imports=silent",
+		"--ignore-missing-imports",
+		"--show-column-numbers",
+		"--no-pretty",
+		"--config-file=${workspaceFolder}/backend/pyproject.toml"
+	]
 }

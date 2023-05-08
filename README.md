@@ -29,6 +29,7 @@ Template for starting Django Rest Framework projects
 [![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/pylint-dev/pylint)
 [![linting: flake8](https://img.shields.io/badge/linting-flake8-blue)](https://flake8.pycqa.org/)
 [![docstyle: pydocstyle](https://img.shields.io/badge/docstyle-pydocstyle-blue)](https://github.com/PyCQA/pydocstyle)
+[![mypy](https://img.shields.io/badge/mypy-checked-blue)](https://mypy.readthedocs.io/)
 
 ## Setup
 
