@@ -22,6 +22,7 @@
 	],
 	"unwantedRecommendations": [
 		"ms-python.pylint", // python extension handles all linting with pluggables
-		"ms-python.flake8"
+		"ms-python.flake8",
+		"matangover.mypy"
 	]
 }
