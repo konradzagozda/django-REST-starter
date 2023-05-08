@@ -10,6 +10,7 @@
 		"authtoken",
 		"autodocstring",
 		"autoupdate",
+		"autouse",
 		"azuretools",
 		"batisteo",
 		"davidanson",
@@ -44,6 +45,7 @@
 		"Redoc",
 		"ritwickdey",
 		"runserver",
+		"sessionstart",
 		"shamanu",
 		"socialaccount",
 		"spywhere",
@@ -61,8 +63,13 @@
 		"yapf",
 		"yzhang"
 	],
+	"python.testing.autoTestDiscoverOnSaveEnabled": true,
+	"python.testing.pytestEnabled": true,
+	"python.testing.pytestArgs": [
+		"backend"
+	],
 	"python.linting.maxNumberOfProblems": 300,
-	"python.envFile": "${workspaceFolder}/backend/.env",
+	"python.envFile": "${workspaceFolder}/backend/env/local.env",
 	"python.formatting.provider": "yapf",
 	"python.linting.enabled": true,
 	"python.linting.lintOnSave": true,
@@ -114,5 +121,6 @@
 		"--show-column-numbers",
 		"--no-pretty",
 		"--config-file=${workspaceFolder}/backend/pyproject.toml"
-	]
+	],
+	"python.testing.unittestEnabled": false
 }

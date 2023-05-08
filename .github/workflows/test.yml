@@ -11,7 +11,7 @@ jobs:
       - run: |
           set -x
           cd backend
-          cp env/dev.env .env
+          cp env/compose.env .env
           docker compose up -d postgres
           pipx install poetry
           poetry install

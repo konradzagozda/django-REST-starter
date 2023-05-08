@@ -4,4 +4,4 @@ set -ex
 
 python -m pip install poetry
 
-cp backend/env/dev.env backend/.env
+cp backend/env/compose.env backend/.env
