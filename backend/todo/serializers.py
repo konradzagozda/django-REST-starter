@@ -8,7 +8,7 @@ class TodoSerializer(serializers.ModelSerializer):
     """Todo serializer."""
 
     class Meta:
-        """Metadata for todo serailizer."""
+        """Metadata for todo serializer."""
 
         model = Todo
         fields = ('id', 'title', 'description', 'completed')

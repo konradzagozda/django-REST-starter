@@ -1,3 +1,5 @@
+# pylint: disable=redefined-outer-name
+
 from io import StringIO
 import json
 
@@ -12,7 +14,7 @@ pytestmark = pytest.mark.django_db
 
 
 @pytest.fixture
-def users_data():
+def users_data() -> list[dict]:
     return [{
         "username": "admin",
         "email": "admin@example.com",
@@ -42,14 +44,14 @@ def users_data():
 
 
 @pytest.fixture
-def create_fixture_file(tmpdir, users_data):
+def create_fixture_file(tmpdir: str, users_data: list[dict]) -> str:
     file_path = tmpdir.join('users.json')
     with open(file_path, 'w', encoding='utf-8') as file:
         json.dump(users_data, file)
     return str(file_path)
 
 
-def test_load_users_command(create_fixture_file, users_data):
+def test_load_users_command(create_fixture_file: str, users_data: list[dict]) -> None:
     out = StringIO()
     call_command('load_users', '--file-path', create_fixture_file, stdout=out)
 
@@ -65,7 +67,7 @@ def test_load_users_command(create_fixture_file, users_data):
     assert 'Successfully loaded 4 users' in out.getvalue()
 
 
-def test_load_users_command_invalid_path():
+def test_load_users_command_invalid_path() -> None:
     non_existent_file_path = 'non_existent_file.json'
     with pytest.raises(CommandError, match=f'File not found: {non_existent_file_path}'):
         call_command('load_users', '--file-path', non_existent_file_path)

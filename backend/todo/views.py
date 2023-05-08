@@ -1,4 +1,5 @@
 """Todo viewset."""
+# pylint: disable=too-many-ancestors
 
 from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated

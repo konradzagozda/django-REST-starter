@@ -40,6 +40,7 @@ pylint = "^2.17.4"
 pylint-django = "^2.5.3"
 pre-commit = "^3.3.1"
 pydocstyle = "^6.3.0"
+tomli = "^2.0.1"
 
 [build-system]
 requires = ["poetry-core"]
@@ -81,7 +82,7 @@ django_settings_module = "backend.settings"
 ignore_patterns = [".venv", "__pycache__"]
 
 [tool.bandit]
-exclude_dirs = ["tests", ".venv", "conftest.py"]
+exclude_dirs = ["test", ".venv", "conftest.py"]
 
 [tool.pylint]
 load-plugins = "pylint_django"
@@ -93,11 +94,9 @@ init-hook = "import sys; sys.path.append('/workspaces/django-tutorial/backend')"
 
 [tool.pylint.MESSAGE_CONTROL]
 disable = [
-	"W0621", # redefined-outer-name for pytest
 	"C0114", # missing-module-docstring, pydocstyle handles it
 	"C0115", # missing-class-docstring, pydocstyle handles it
 	"C0116", # missing-function-docstring, pydocstyle handles it
-	"R0901", # too-many-ancestors
 ]
 
 [tool.isort]

@@ -4,11 +4,13 @@
 
 Template for starting Django Rest Framework projects
 
-👇👇 Click to preview the project in cloudspaces
+👇👇 Click to preview the project in the cloud
 
 [![VS Code Container](https://img.shields.io/static/v1?label=VS+Code&message=Container&logo=visualstudiocode&color=007ACC&logoColor=007ACC&labelColor=2C2C32)](https://open.vscode.dev/konradzagozda/django-REST-starter)
 
 ## Tools
+
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-blue?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
 ### Formatters
 
@@ -20,6 +22,8 @@ Template for starting Django Rest Framework projects
 [![security: bandit](https://img.shields.io/badge/security-bandit-yellow.svg)](https://github.com/PyCQA/bandit)
 [![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/pylint-dev/pylint)
 [![linting: flake8](https://img.shields.io/badge/linting-flake8-blue)](https://flake8.pycqa.org/)
+[![docstyle: pydocstyle](https://img.shields.io/badge/docstyle-pydocstyle-blue)](https://github.com/PyCQA/pydocstyle)
+
 
 ## Setup
 

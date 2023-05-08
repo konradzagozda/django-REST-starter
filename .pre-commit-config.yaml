@@ -1,5 +1,5 @@
 default_language_version:
-    python: python3.10
+  python: python3.10
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -29,9 +29,9 @@ repos:
   - repo: https://github.com/PyCQA/bandit
     rev: 1.7.5
     hooks:
-    - id: bandit
-      args: ["-c", "backend/pyproject.toml"]
-      additional_dependencies: ["bandit[toml]"]
+      - id: bandit
+        args: ["-c", "backend/pyproject.toml"]
+        additional_dependencies: ["bandit[toml]"]
   - repo: local
     hooks:
       - id: pylint
@@ -39,7 +39,8 @@ repos:
         entry: pylint
         language: system
         types: [python]
-        args:
-          [
-            "--rcfile=backend/pyproject.toml"
-          ]
+        args: ["--rcfile=backend/pyproject.toml"]
+  - repo: https://github.com/pycqa/pydocstyle
+    rev: 6.3.0
+    hooks:
+      - id: pydocstyle

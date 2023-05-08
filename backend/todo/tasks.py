@@ -73,6 +73,6 @@ def create_random_users_and_tasks(num_users: int = 1000, num_todos_per_user: int
     send_mail(
         subject,
         message,
-        settings.EMAIL_FROM,  # Replace with your 'from' email address
-        [settings.EMAIL_TO],  # Replace with the admin's email address
+        settings.EMAIL_FROM,
+        [settings.EMAIL_TO],
     )

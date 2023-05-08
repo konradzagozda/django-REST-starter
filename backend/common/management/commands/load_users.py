@@ -1,20 +1,26 @@
+"""Module containing load_users.py command."""
 import json
 import os
 
 from django.contrib.auth import get_user_model
 from django.core.management.base import BaseCommand
 from django.core.management.base import CommandError
+from django.core.management.base import CommandParser
 
 User = get_user_model()
 
 
 class Command(BaseCommand):
+    """Load users from a JSON file."""
+
     help = 'Load users from a JSON file'
 
-    def add_arguments(self, parser):
+    def add_arguments(self, parser: CommandParser) -> None:
+        """Arguments definition."""
         parser.add_argument('--file-path', type=str, help='Path to the JSON file containing users')
 
     def handle(self, *args, **options):
+        """Command main body."""
         file_path = options.get('file_path') or 'common/fixtures/users.json'
 
         if not os.path.exists(file_path):
