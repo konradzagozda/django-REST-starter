@@ -96,7 +96,7 @@ django-settings-module = "backend.settings"
 
 [tool.pylint.master]
 ignore-paths = [".venv", "backend.venv"]
-init-hook = "import sys; sys.path.append('/workspaces/django-tutorial/backend')"
+init-hook = "import sys; sys.path.append('./backend')"
 
 [tool.pylint.MESSAGE_CONTROL]
 disable = [
