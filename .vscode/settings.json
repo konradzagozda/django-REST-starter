@@ -57,6 +57,8 @@
 	"python.linting.maxNumberOfProblems": 300,
 	"python.envFile": "${workspaceFolder}/backend/.env",
 	"python.formatting.provider": "yapf",
+	"python.linting.enabled": true,
+	"python.linting.lintOnSave": true,
 	"python.formatting.yapfArgs": [
 		"--style",
 		"${workspaceFolder}/backend/.style.yapf"
@@ -78,7 +80,6 @@
 		"source.organizeImports": true
 	},
 	"isort.importStrategy": "fromEnvironment",
-	"python.linting.enabled": true,
 	"python.linting.banditEnabled": true,
 	"python.linting.banditArgs": [
 		"-c",
@@ -97,5 +98,6 @@
 	"isort.args": [
 		"--settings-path",
 		"${workspaceFolder}/backend/pyproject.toml"
-	]
+	],
+	"python.linting.pydocstyleEnabled": true
 }

@@ -1,6 +1,4 @@
-"""
-This module provides project-wide fixtures for pytest
-"""
+"""This module provides project-wide fixtures for pytest."""
 
 from django.contrib.auth import get_user_model
 import pytest
@@ -11,9 +9,11 @@ User = get_user_model()
 
 @pytest.fixture
 def test_user() -> User:
+    """Fixture that returns test User."""
     return User.objects.create_user(username='test_user', password='test_password')
 
 
 @pytest.fixture
 def api_client() -> APIClient:
+    """Fixture that returns rest framework APIClient."""
     return APIClient()

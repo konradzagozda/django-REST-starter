@@ -1,3 +1,4 @@
+"""Tasks for todo package."""
 from celery import shared_task
 from django.conf import settings
 from django.contrib.auth import get_user_model
@@ -13,9 +14,7 @@ User = get_user_model()
 
 @shared_task
 def send_undone_todos_email_to_all_users() -> None:
-    """
-    send undone todos to all of the users
-    """
+    """Send undone todos to all of the users."""
     users = User.objects.all()
 
     for user in users:
@@ -43,7 +42,7 @@ def send_undone_todos_email_to_all_users() -> None:
 
 @shared_task
 def create_random_users_and_tasks(num_users: int = 1000, num_todos_per_user: int = 100) -> None:
-    """create random users and tasks
+    """Create random users and tasks.
 
     Args:
         num_users (int, optional): number of users generated. Defaults to 1000.
