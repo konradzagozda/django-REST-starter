@@ -10,6 +10,7 @@
 
 [![django](https://img.shields.io/badge/framework-Django-blue)](https://www.djangoproject.com/)
 [![drf](https://img.shields.io/badge/framework-Django%20REST%20Framework-blue)](https://www.django-rest-framework.org/)
+
 Template for starting Django Rest Framework projects
 
 ## Tools
